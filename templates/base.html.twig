@@ -2,11 +2,16 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <link rel="icon" href="{{ asset('pictures/favicon.ico') }}" />
+        <title>{% block title %} Dream Travel - {{ pageTitle }}{% endblock %}</title>
+        {% block stylesheets %}
+            <!-- Internals stylesheets" -->
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}" crossorigin=""/>
+        {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+        {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>
