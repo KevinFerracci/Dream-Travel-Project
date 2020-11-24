@@ -1,5 +1,6 @@
 body {
   margin: 0px; 
+  font-family: 'Roboto', sans-serif;
 }
 
 header {
@@ -11,18 +12,19 @@ header {
 
  nav {
    text-align: center; 
-   padding-top: 20px;
    width: 100%;
    position:fixed; 
  }
 
 nav .logo {
-  height: 150px;
+  margin-top: -15px;
+  height: 80px;
+  vertical-align: top;
 }
 
 nav ul {
   list-style-type: none;
-  font-size: 24px;
+  font-size: 18px;
 }
 
 nav li {
@@ -35,4 +37,3 @@ nav li {
    text-decoration: none;
    color : white; 
  }
-

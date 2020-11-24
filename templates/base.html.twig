@@ -10,11 +10,16 @@
      
         {% block stylesheets %}
 
+            <!-- Font -->
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet">
+
             <!-- Internals stylesheets" -->
             
             <link rel="stylesheet" href="{{ asset('css/style.css') }}" crossorigin=""/>
 
         {% endblock %}
+
     </head>
 
     <body>
@@ -22,9 +27,6 @@
             {% block header %}
                 <header>
                     <nav>
-                        <!-- <div class="logo">  
-                          <img src="{{ asset('pictures/logo.png') }}" alt="logo">
-                        </div> -->
                         <ul>
                             <li><a href = "#"> Recherche simple</a></li>
                             <li><a href = "#"> Recherche avancée</a></li>
@@ -43,8 +45,10 @@
       
         {% endblock %}
 
-        {% block javascripts %}
-        
-        {% endblock %}
+     
   </body>
+
+     {% block javascripts %}
+             <script src="{{ asset('../js/nav.js') }}"></script>
+        {% endblock %}
 </html>
