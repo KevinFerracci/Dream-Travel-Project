@@ -4,14 +4,47 @@
         <meta charset="UTF-8">
         <link rel="icon" href="{{ asset('pictures/favicon.ico') }}" />
         <title>{% block title %} Dream Travel - {{ pageTitle }}{% endblock %}</title>
+       
+
+
+     
         {% block stylesheets %}
+
             <!-- Internals stylesheets" -->
+            
             <link rel="stylesheet" href="{{ asset('css/style.css') }}" crossorigin=""/>
+
         {% endblock %}
     </head>
+
     <body>
         {% block body %}
+            {% block header %}
+                <header>
+                    <nav>
+                        <!-- <div class="logo">  
+                          <img src="{{ asset('pictures/logo.png') }}" alt="logo">
+                        </div> -->
+                        <ul>
+                            <li><a href = "#"> Recherche simple</a></li>
+                            <li><a href = "#"> Recherche avancée</a></li>
+                            <li><a href = "#">  <img  class="logo" src="{{ asset('pictures/logo.png') }}" alt="logo">
+                            <li><a href = "#"> Groupe de voyage</a></li>
+                            <li><a href = "#"> S'inscrire</a></li>
+                            <li><a href = "#"> Se connecter</a></li>
+                        </ul>
+                    </nav>
+                </header>
+        
+              
+            {% endblock %}
+
+            {% block container %}{% endblock %}
+      
         {% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+
+        {% block javascripts %}
+        
+        {% endblock %}
+  </body>
 </html>
