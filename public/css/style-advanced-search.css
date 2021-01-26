@@ -1,0 +1,13 @@
+main {
+  top : 0%;
+  height: 80vh;
+}
+
+#form-advanced-search {
+  background-image: url(../pictures/santorini.jpg);
+  background-size: cover; 
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  position: relative; 
+}
