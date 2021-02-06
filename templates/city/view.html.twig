@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+
+    {{ parent() }}
+
+    <link rel="stylesheet" href="{{ asset('css/style-city-show.css') }}" crossorigin="" />
+{% endblock %}
+
+{% block container %}
+<p> Fiche de la ville {{ cities[0].cityName}} </p>
+{{ dump(cities[0] ) }}
+{% endblock %}
