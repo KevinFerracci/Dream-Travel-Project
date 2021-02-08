@@ -8,6 +8,29 @@
 {% endblock %}
 
 {% block container %}
-<p> Fiche de la ville {{ cities[0].cityName}} </p>
-{{ dump(cities[0] ) }}
+<p> Fiche de la ville </p>
+
+  {# <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ city.id }}</td>
+            </tr>
+            <tr>
+                <th>CityName</th>
+                <td>{{ city.cityName }}</td>
+            </tr>
+            <tr>
+                <th>CountryName</th>
+                <td>{{ city.countryName }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ city.createdAt ? city.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table> 
+    #}
+{{ dump(city) }}
+{{ dump(urbanArea) }}
 {% endblock %}
