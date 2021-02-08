@@ -8,7 +8,24 @@
 {% endblock %}
 
 {% block container %}
-<p> Fiche de la ville </p>
+<p> Fiche de la ville {{ city.name }} </p>
+
+{{ urbanArea.categories[4].name }} : {{ urbanArea.categories[4].score_out_of_10 }} </br>
+{{ urbanArea.categories[14].name }} : {{ urbanArea.categories[14].score_out_of_10 }} </br>
+{{ urbanArea.categories[7].name }} : {{ urbanArea.categories[7].score_out_of_10 }} </br>
+{{ urbanArea.categories[1].name }} : {{ urbanArea.categories[1].score_out_of_10 }} </br>
+{{ urbanArea.categories[10].name }} : {{ urbanArea.categories[10].score_out_of_10 }} </br>
+{{ urbanArea.categories[15].name }} : {{ urbanArea.categories[15].score_out_of_10 }} </br>
+{{ urbanArea.categories[13].name }} : {{ urbanArea.categories[13].score_out_of_10 }} </br>
+
+
+{{ urbanArea.summary }}
+
+
+
+
+
+
 
   {# <table class="table">
         <tbody>
