@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Weather{% endblock %}
+
+{% block body %}
+    <h1>Weather</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ weather.id }}</td>
+            </tr>
+            <tr>
+                <th>Month</th>
+                <td>{{ weather.month }}</td>
+            </tr>
+            <tr>
+                <th>Year</th>
+                <td>{{ weather.year }}</td>
+            </tr>
+            <tr>
+                <th>AverageMin</th>
+                <td>{{ weather.averageMin }}</td>
+            </tr>
+            <tr>
+                <th>AverageMax</th>
+                <td>{{ weather.averageMax }}</td>
+            </tr>
+            <tr>
+                <th>TempLevelMin</th>
+                <td>{{ weather.tempLevelMin }}</td>
+            </tr>
+            <tr>
+                <th>TempLevelMax</th>
+                <td>{{ weather.tempLevelMax }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ weather.createdAt ? weather.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ weather.UpdatedAt ? weather.UpdatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('weather_index') }}">back to list</a>
+
+    <a href="{{ path('weather_edit', {'id': weather.id}) }}">edit</a>
+
+    {{ include('weather/_delete_form.html.twig') }}
+{% endblock %}

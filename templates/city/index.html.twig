@@ -26,13 +26,18 @@
                 <td>{{ city.geonameId }}</td>
                 <td>{{ city.createdAt ? city.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ city.updatedAt ? city.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('city_show', {'id': city.id}) }}">show</a>
+                    <a href="{{ path('city_edit', {'id': city.id}) }}">edit</a>
+                </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="7">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-{% endblock %}
 
+    <a href="{{ path('city_new') }}">Create new</a>
+{% endblock %}

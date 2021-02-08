@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Weather index{% endblock %}
+
+{% block body %}
+    <h1>Weather index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Month</th>
+                <th>Year</th>
+                <th>AverageMin</th>
+                <th>AverageMax</th>
+                <th>TempLevelMin</th>
+                <th>TempLevelMax</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for weather in weather %}
+            <tr>
+                <td>{{ weather.id }}</td>
+                <td>{{ weather.month }}</td>
+                <td>{{ weather.year }}</td>
+                <td>{{ weather.averageMin }}</td>
+                <td>{{ weather.averageMax }}</td>
+                <td>{{ weather.tempLevelMin }}</td>
+                <td>{{ weather.tempLevelMax }}</td>
+                <td>{{ weather.createdAt ? weather.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ weather.UpdatedAt ? weather.UpdatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('weather_show', {'id': weather.id}) }}">show</a>
+                    <a href="{{ path('weather_edit', {'id': weather.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('weather_new') }}">Create new</a>
+{% endblock %}
