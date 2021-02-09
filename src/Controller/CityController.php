@@ -29,7 +29,7 @@ class CityController extends AbstractController
     /**
      * @Route("/fiche/{geonameId}", name="city_view", methods={"GET"})
      */
-    public function view($geonameId ): Response
+    public function view($geonameId): Response
     {
         //4717560/ texas
         //http://localhost:8000/city/3489854 jamaica
@@ -42,14 +42,19 @@ class CityController extends AbstractController
             $cityName = strtolower($objectResponse->name);
             $jsonStringScores = file_get_contents('https://api.teleport.org/api/urban_areas/slug:'. $cityName . '/scores/');
             $objectScoreResponse = json_decode($jsonStringScores);
+
+            $jsonStringImage = file_get_contents('https://api.teleport.org/api/urban_areas/slug:'. $cityName . '/images/');
+            $objectResponseImage = json_decode($jsonStringImage);
         }else{
             $objectScoreResponse = null;
+            $objectResponseImage = null; 
         }
 
         return $this->render('city/view.html.twig', [
             'pageTitle' => 'Paris',
             'city' => $objectResponse,
-            'urbanArea' => $objectScoreResponse
+            'urbanArea' => $objectScoreResponse,
+            'image' => $objectResponseImage, 
         ]);
     }
 

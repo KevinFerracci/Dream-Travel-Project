@@ -10,6 +10,8 @@
 {% block container %}
 <p> Fiche de la ville {{ city.name }} </p>
 
+<img src="{{ image.photos[0].image.web }}" alt="Image de {{city.name}}" </img> </br>
+
 {{ urbanArea.categories[4].name }} : {{ urbanArea.categories[4].score_out_of_10 }} </br>
 {{ urbanArea.categories[14].name }} : {{ urbanArea.categories[14].score_out_of_10 }} </br>
 {{ urbanArea.categories[7].name }} : {{ urbanArea.categories[7].score_out_of_10 }} </br>
@@ -22,32 +24,12 @@
 {{ urbanArea.summary }}
 
 
-
-
-
-
-
-  {# <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ city.id }}</td>
-            </tr>
-            <tr>
-                <th>CityName</th>
-                <td>{{ city.cityName }}</td>
-            </tr>
-            <tr>
-                <th>CountryName</th>
-                <td>{{ city.countryName }}</td>
-            </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ city.createdAt ? city.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table> 
-    #}
-{{ dump(city) }}
+{# {{ dump(city) }}
 {{ dump(urbanArea) }}
+{{ dump(image) }}
+
+#}
+
+
 {% endblock %}
+

@@ -19,7 +19,7 @@ use Symfony\Component\Serializer\Serializer;
  class CityController extends AbstractController
  {
         /**
-       * @Route("", name="list", methods={"GET"})
+       * @Route("/city", name="list", methods={"GET"})
        */
       public function list(CityRepository $cityRepository, ObjectNormalizer $objetNormalizer, Request $request)
       {
