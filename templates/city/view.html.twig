@@ -21,12 +21,20 @@
 {{ urbanArea.categories[13].name }} : {{ urbanArea.categories[13].score_out_of_10 }} </br>
 
 
-{{ urbanArea.summary }}
+{{ urbanArea.summary }} </br>
+{% for picture in images.results|slice(0,5) %}
+<img src="{{ picture.urls.thumb}}" alt="Image de {{city.name}}" </img>
+{% endfor %}
+
+{{ dump(images.results[0].urls)}}
 
 
-{# {{ dump(city) }}
-{{ dump(urbanArea) }}
+{{ dump(city) }}
+{{ dump(images) }}
 {{ dump(image) }}
+ {#
+{{ dump(urbanArea) }}
+
 
 #}
 

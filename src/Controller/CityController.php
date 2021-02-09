@@ -45,16 +45,25 @@ class CityController extends AbstractController
 
             $jsonStringImage = file_get_contents('https://api.teleport.org/api/urban_areas/slug:'. $cityName . '/images/');
             $objectResponseImage = json_decode($jsonStringImage);
+
+            $jsonUnsplashStringImage = file_get_contents('https://api.unsplash.com/search/photos?query='. $cityName . '&client_id=1_M8oDW-2BC1jPmpZGhIFAF4QwLoIYEuf2l_bzB3EDw');
+            $objectUnsplashImageResponse = json_decode($jsonUnsplashStringImage);
+            
         }else{
             $objectScoreResponse = null;
             $objectResponseImage = null; 
+            $objectUnsplashImageResponse = null; 
         }
+
+
+
 
         return $this->render('city/view.html.twig', [
             'pageTitle' => 'Paris',
             'city' => $objectResponse,
             'urbanArea' => $objectScoreResponse,
             'image' => $objectResponseImage, 
+            'images' => $objectUnsplashImageResponse,
         ]);
     }
 
