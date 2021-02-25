@@ -47,13 +47,18 @@ class CityController extends AbstractController
             $jsonStringImage = file_get_contents('https://api.teleport.org/api/urban_areas/slug:'. $cityName . '/images/');
             $objectResponseImage = json_decode($jsonStringImage);
 
-            $jsonUnsplashStringImage = file_get_contents('https://api.unsplash.com/search/photos?query='. $cityName . '&client_id=1_M8oDW-2BC1jPmpZGhIFAF4QwLoIYEuf2l_bzB3EDw');
+            $jsonUnsplashStringImage = file_get_contents('https://api.unsplash.com/photos/random?query='. $cityName . '&client_id=BCXFUSjrXKrqgpLKLj6gN36cBB5qZ91T3lzsnrWQthI');
             $objectUnsplashImageResponse = json_decode($jsonUnsplashStringImage);
+
+            $jsonTitleImage = file_get_contents('https://api.unsplash.com/search/photos/?query='. $cityName . '&client_id=BCXFUSjrXKrqgpLKLj6gN36cBB5qZ91T3lzsnrWQthI');
+            $objectResponseTitleImage = json_decode($jsonTitleImage);
+            $titleImage = $objectResponseTitleImage->results[0]->urls; 
             
         }else{
             $objectScoreResponse = null;
             $objectResponseImage = null; 
             $objectUnsplashImageResponse = null; 
+            $objectResponseTitleImage = null;
         }
 
 
@@ -66,6 +71,7 @@ class CityController extends AbstractController
             'urbanArea' => $objectResponse,
             'image' => $objectResponseImage, 
             'images' => $objectUnsplashImageResponse,
+            'titleImage' => $titleImage,
         ]);
     }
 

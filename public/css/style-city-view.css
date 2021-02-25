@@ -1,6 +1,234 @@
-p {
-  font-size: 50px;
+
+/*  STYLE CITY_SHOW */
+.container-fluid {
+  background-color: hsl(214, 15%, 91%, 0.8);
+  min-height: 100%;
+  min-width: 100%;
+  padding-bottom: 0; 
 }
+
+
+.cityTemplate,
+.userTemplate {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.city-user-badge {
+  width: 10%;
+  top: 89px;
+  left: 200px;
+}
+
+
+.city-like,
+.user-like {
+  font-size: 1em;
+  position: absolute;
+  left : -10px;
+  top : 20px;
+}
+
+
+#h1-city,
+#h1-user {
+  flex: 1;
+  margin-left: 15px;
+  font-size: 1.7em;
+  color: #263959;
+}
+
+#h1-user {
+  font-size: 1.5em;
+  text-align: center;
+  margin-top: 25px;
+}
+
+h2 {
+  color: #03383B;
+  font-size: 1.3em;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.h2-form-title {
+  text-align: center;
+  margin-top: 10px;
+}
+
+h3 {
+  font-size: 1.2em;
+}
+
+h4 {
+  font-size: 0.9em;
+  margin-bottom: 0;
+  font-weight: 400;
+}
+
+#left-aside {
+  flex: 1;
+}
+
+#center-div {
+  flex: 1;
+  width: 80%;
+  margin: auto;
+}
+
+
+#right-aside {
+
+  flex: 1;
+}
+
+.header-city-informations.city-title,
+.header-user-informations.user-title {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.header-user-informations.user-title {
+  position: relative;
+}
+
+.role {
+  position: absolute;
+  top: 35px;
+  left: 130px;
+}
+
+.badge-title {
+  position: absolute;
+  top: 55px;
+  left: 130px;
+}
+
+.points {
+  position: absolute;
+  top: 75px;
+  left: 130px;
+}
+
+.header-city-informations.meteo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  position: relative;
+}
+
+.date {
+  position: absolute;
+  top: -70px;
+  right: 32%;
+}
+
+.date-start {
+  position: absolute;
+  top: -70px;
+  left: 145px;
+}
+
+.date-end {
+  position: absolute;
+  top: -70px;
+  left: 239px;
+}
+
+.min-temperature {
+  position: absolute;
+  right: 125px;
+}
+
+.max-temperature {
+  position: absolute;
+  right: 32px;
+}
+
+.thermo-img {
+  height: 3em;
+}
+
+.city-basic-datas,
+.user-basic-datas {
+  width: 80%;
+}
+
+.img-thumbnail {
+  padding: 0;
+  border: none;
+  flex: 1;
+  border-radius: 50%;
+  max-width: 7em;
+  height: 7em;
+
+  -webkit-box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.75);
+}
+
+.city-basic-datas,
+.user-basic-datas {
+  width: 80%;
+  margin: 30px auto;
+}
+
+.user-basic-datas {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inscription-date {
+  position: absolute;
+  top: -30px;
+  margin-bottom: 20px;
+}
+
+.progress {
+  background-color: #FFFFFF;
+  height: 10px;
+}
+
+.progress-bar {
+  background-color: #263959;
+}
+
+#progressbar-1 {
+  background-color: rosybrown;
+}
+
+#progressbar-2 {
+  background-color: darkseagreen;
+}
+
+#progressbar-3 {
+  background-color: darksalmon;
+}
+
+#progressbar-4 {
+  background-color: darkgray;
+}
+
+#progressbar-5 {
+  background-color: burlywood;
+}
+
+#progressbar-6 {
+  background-color: cornflowerblue;
+}
+
+#progressbar-7 {
+  background-color: darkkhaki;
+}
+
+
 
 /* CSS FOR LEAFLET */
 #mapid {
@@ -23,3 +251,701 @@ p {
 }
 
 /* END CSS FOR LEAFLET */
+
+p {
+  text-align: justify;
+  overflow-wrap: break-word;
+}
+
+.badge-tag {
+  background-color: #56967D;
+  margin: 0.2em;
+  font-size: 0.9em;
+}
+
+.tags-list {
+  margin: 2em auto;
+}
+
+.tags-list-language {
+  margin: 0.5em auto;
+}
+
+.carousel-item {
+  padding-bottom: 30px;
+}
+
+.img-carousel {
+  height: 6em;
+  width: 6em;
+  margin: 0.3em 0.1em;
+
+  -webkit-box-shadow: 0px 0px 6px -5px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 6px -5px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 6px -5px rgba(0, 0, 0, 0.75);
+
+}
+
+.hr-city-description,
+.hr-user-description {
+  width: 60%;
+  margin: 1em auto;
+}
+
+.carousel-indicators {
+  position: relative;
+  z-index: 0;
+}
+
+.card {
+  margin: 2px auto;
+  width: 95%;
+
+}
+
+.card-header,
+.card-body {
+  background-color: #FFFFFF;
+}
+
+.card-body {
+  padding: 0;
+  padding-bottom: 35px;
+}
+
+.card-text {
+  width: 90%;
+  padding: 0;
+  margin: 0;
+  color: #263959;
+  padding-left: 20px;
+}
+
+.report-button,
+.report-button:focus,
+.report-button:active {
+  color: #55967e;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  padding-right: 0.5em;
+}
+
+.report-message,
+.report-message a {
+  font-size: 1em;
+  font-family: Arial;
+  color: red;
+  margin: 0.2em;
+}
+
+.em-no_entry {
+  margin-right: 6px;
+}
+
+.user-profile-picture {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.username {
+  color: #263959;
+  font-family: 'Caveat', cursive;
+  font-size: 1.2em;
+
+}
+
+.user-points {
+  font-size: 15px;
+  /*  margin-left: 50px; */
+}
+
+.user-badge {
+  position: absolute;
+  width: 20px;
+  left: 87px;
+  top: 85px;
+}
+
+.review-votes {
+  font-size: 1em;
+  margin-right: 3em;
+  margin-top: 15px;
+}
+
+.review-vote,
+.like {
+  position: relative;
+}
+
+.user-like {
+  position: absolute;
+  top: 10px;
+  left: 320px;
+}
+
+.review-vote i {
+  font-size: 1em;
+}
+
+.fa-circle,
+.fa-circle-thin {
+  color: #55967e;
+}
+
+.btn-see-more {
+  font-size: 0.5em;
+  color: #55967e;
+}
+
+.review-button {
+  display: flex;
+  justify-content: center;
+}
+
+.fa-heart-o,
+.em-heart {
+  position: absolute;
+}
+
+.fa-heart-o {
+  position: absolute;
+  right: 25px;
+  top: 5px;
+}
+
+.em-heart {
+  position: absolute;
+  right: 21px;
+  top: 4px;
+}
+
+.card-form {
+  padding: 5px;
+}
+
+form {
+  width: 90%;
+  margin: auto;
+}
+
+#review_rate {
+  display: flex;
+  flex-direction: row;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+
+}
+
+.form-submit {
+  font-size: 1em;
+  margin: auto;
+  margin-bottom: 20px;
+  margin-top: 5%;
+  color: white;
+  background-color: #56967D;
+  border-radius: 2px;
+  padding: 0.5em;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.invalid-feedback {
+  position: relative;
+  top: 6px;
+  margin: 0px;
+  font-size: 94%;
+}
+
+/* https://stackoverflow.com/questions/9451902/changing-an-inputs-html5-placeholder-color-with-css-does-not-work-on-chrome */
+::-webkit-input-placeholder {
+  color: #E4E7EB;
+}
+
+::-moz-placeholder {
+  color: #E4E7EB;
+}
+
+::-ms-placeholder {
+  color: #E4E7EB;
+}
+
+::placeholder {
+  color: #E4E7EB;
+}
+
+
+.user-image {
+  max-width: 80%;
+  max-height: 400px;
+  margin: 40px auto;
+}
+
+
+.form-error-icon {
+  display: none;
+}
+
+/*  END STYLE CITY_SHOW */
+
+.custom-file {
+  z-index: 0;
+}
+
+#myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg:hover {
+  opacity: 0.7;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  padding-top: 100px;
+  /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.9);
+  /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation */
+.modal-content,
+#caption {
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {
+    -webkit-transform: scale(0)
+  }
+
+  to {
+    -webkit-transform: scale(1)
+  }
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(0)
+  }
+
+  to {
+    transform: scale(1)
+  }
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px) {
+  .modal-content {
+    width: 100%;
+  }
+}
+
+
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+
+  main {
+    width: 90%;
+    margin: auto;
+    font-size: 1.3em;
+  }
+
+  .fa-heart-o {
+    position: absolute;
+    right: 60px;
+    top: 20px;
+  }
+
+  .img-thumbnail {
+    max-width: 10em;
+    height: 10em;
+  }
+
+  #h1-city,
+  #h1-user {
+    margin-left: 30px;
+    font-size: 2.5em;
+  }
+
+  h2 {
+    font-size: 1.8em;
+  }
+
+
+  .date-start {
+    top: -105px;
+    left: 270px;
+  }
+
+  .date-end {
+    top: -105px;
+    left: 375px;
+  }
+
+  .min-temperature {
+    right: 200px;
+  }
+
+  .max-temperature {
+    right: 82px;
+  }
+
+  .img-carousel {
+    height: 8em;
+    min-width: 8em;
+    margin: 0.3em 0.7em;
+  }
+
+  .card-text {
+    margin: auto;
+    padding-left: 0;
+  }
+
+  .city-user-badge {
+    width: 5%;
+  }
+
+  .user-points {
+    font-size: 17px;
+  }
+
+  .header-user-informations p {
+    left: 38%;
+  }
+
+  .role {
+    top: 30%;
+  }
+
+  .points {
+    top: 40%
+  }
+
+  .badge-title {
+    top: 50%;
+  }
+
+  .user-badge {
+    position: absolute;
+    width: 52px;
+    left: 157px;
+    top: 151px;
+  }
+
+
+}
+
+
+@media (min-width: 1400px) {
+  main {
+    margin-top: 180px;
+    width: 80%;
+    font-size: 1em;
+  }
+
+  .img-thumbnail {
+    margin-left: 45%;
+  }
+
+  .img-carousel {
+    margin-left: 0px;
+  }
+
+
+  #h1-city {
+    margin-left: 40px;
+    ;
+  }
+
+  h2 {
+    font-size: 1.4em;
+  }
+
+  .date-start {
+    top: -85px;
+    left: 340px;
+  }
+
+  .date-end {
+    top: -85px;
+    left: 430px;
+  }
+
+  .min-temperature {
+    right: 400px;
+    top: -60px;
+  }
+
+  .thermo-min {
+    position: absolute;
+    left: -40px;
+    height: 70px;
+    width: auto;
+
+  }
+
+  .max-temperature {
+    right: 305px;
+    top: -60px;
+  }
+
+  .thermo-max {
+    position: absolute;
+    width: auto;
+    height: 70px;
+    left: 90px;
+  }
+
+  .city-basic-datas {
+    margin: 60px auto;
+    margin-right: 10%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #mapid {
+    width: 400px;
+    height: 280px;
+    left: 88%;
+    box-sizing: unset;
+  }
+
+  .hr-city-description,
+  .hr-user-description {
+    width: 40%;
+  }
+
+  #leaflet-maps {
+    position: absolute;
+    top: 480px;
+    left: 0px;
+  }
+
+  *,
+  ::after,
+  ::before {
+    box-sizing: unset
+  }
+
+  .card {
+    width: 80%;
+  }
+
+  .card-form {
+    width: 80%;
+  }
+
+  form {
+    width: 60%;
+  }
+
+  .intern-nav-user .navbar-nav {
+    left: 10%;
+    font-size: 1.2em;
+  }
+
+  .intern-nav-user .navbar-nav li:first-child {
+    margin-right: 20%;
+
+  }
+
+  .intern-nav-user .navbar-nav li:last-child {
+    margin-right: 20%;
+
+  }
+
+  .intern-nav-user .navbar-nav li a {
+    width: auto;
+  }
+
+  .userTemplate {
+    margin-top: -90px;
+  }
+
+  .userTemplate-no-nav {
+    margin-top: -30px;
+  }
+
+  .role {
+    top: 50px;
+    left: 260px;
+  }
+
+  .badge-title {
+    top: 70px;
+    left: 260px;
+  }
+
+  .points {
+    top: 90px;
+    left: 260px
+  }
+
+
+  .user-badge {
+    position: absolute;
+    width: 40px;
+    left: 53%;
+    top: 74%;
+  }
+
+
+  a.nav-link:hover,
+  .btn-see-more:hover {
+    text-decoration: none;
+    color: #03383B;
+  }
+
+  .btn-see-more {
+    font-size: 0.9em;
+  }
+
+  .alert-info {
+    width: 60%;
+    margin: auto;
+  }
+
+  .review-vote .fa-heart-o {
+    right: 25px;
+    top: 4px;
+  }
+
+  .user-like {
+    position: absolute;
+    top: 10px;
+    left: 90px;
+  }
+
+  .fa-heart-user {
+    position: unset;
+    right: unset;
+    top: unset;
+  }
+
+
+  h3.card-title {
+    /*  margin: auto; */
+    width: 90%;
+
+  }
+
+  .user-profile-picture {
+    max-width: 50px;
+  }
+
+  .city-user-badge {
+    width: 3%;
+  }
+
+
+  .header-user-informations p {
+    left: 61%;
+  }
+
+  /*.em-heart {
+    position: absolute;
+    right: 60px;
+    top: 20px;
+  }*/
+
+  img.website-logo{
+    width: 200px;
+    position: absolute;
+    margin-top: -30px;
+    padding-right: 40px;
+    padding-bottom: 52px;
+    left: 45%; 
+  }
+
+}
+
+@media (min-width: 1600px) {
+  .header-user-informations p {
+    left: 58%;
+  }
+
+  /*.user-like {
+    position : absolute; 
+    top: 10px; 
+    left: 60%;
+  }
+
+  .em-heart {
+    position:absolute; 
+    top: 10px; 
+    left: 60%;
+  }
+
+  .fa-heart-o {
+    position:absolute; 
+    top: 10px; 
+    left: 75%;
+  }*/
+  
+}

@@ -6,9 +6,9 @@ body {
 /*  STYLE HEADER*/
 
  header {
-   height : 15vh;
+   height : 10vh;
    background-color:#9ab3f5;
-   position:fixed; 
+   /*position : fixed; */
    width: 100%;
  }
 
@@ -16,7 +16,7 @@ body {
    text-align: center; 
    width: 100%;
    max-height: 120px;
-   
+   font-family: 'Caveat', cursive;
 }
 
  nav .logo {
@@ -26,7 +26,7 @@ body {
 
 nav ul {
   list-style-type: none;
-  font-size: 20px;
+  font-size: 25px;
 
 }
 
@@ -53,6 +53,7 @@ nav a:hover {
 
  /*  STYLE FOOTER */
 footer {
+  font-family: 'Caveat', cursive;
   background-color: #a3d8f4;
   bottom: 0;
   height : 6%;
