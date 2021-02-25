@@ -4,11 +4,23 @@
 
     {{ parent() }}
 
-    <link rel="stylesheet" href="{{ asset('css/style-city-show.css') }}" crossorigin="" />
+<!-- Stylesheet LEAFLET -->
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin="" />
+
+<!-- End Stylesheet LEAFLET -->
+
+
+    <link rel="stylesheet" href="{{ asset('css/style-city-view.css') }}" crossorigin="" />
 {% endblock %}
 
 {% block container %}
-<p> Fiche de la ville {{ cityScore.name }} </p>
+
+<p> Fiche de la ville {{ urbanArea.name }} </p>
 
 
  {% for weather in city.weather %} 
@@ -19,34 +31,49 @@ Température minimale : {{ weather.tempLevelMin }}
 
 {% endfor %}
 
-<img src="{{ image.photos[0].image.web }}" alt="Image de {{cityScore.name}}" </img> </br>
+<img src="{{ image.photos[0].image.web }}" alt="Image de {{urbanArea.name}}" </img> </br>
 
-{{ urbanArea.categories[4].name }} : {{ urbanArea.categories[4].score_out_of_10 }} </br>
-{{ urbanArea.categories[14].name }} : {{ urbanArea.categories[14].score_out_of_10 }} </br>
-{{ urbanArea.categories[7].name }} : {{ urbanArea.categories[7].score_out_of_10 }} </br>
-{{ urbanArea.categories[1].name }} : {{ urbanArea.categories[1].score_out_of_10 }} </br>
-{{ urbanArea.categories[10].name }} : {{ urbanArea.categories[10].score_out_of_10 }} </br>
-{{ urbanArea.categories[15].name }} : {{ urbanArea.categories[15].score_out_of_10 }} </br>
-{{ urbanArea.categories[13].name }} : {{ urbanArea.categories[13].score_out_of_10 }} </br>
+{{ cityScore.categories[4].name }} : {{ cityScore.categories[4].score_out_of_10 }} </br>
+{{ cityScore.categories[14].name }} : {{ cityScore.categories[14].score_out_of_10 }} </br>
+{{ cityScore.categories[7].name }} : {{ cityScore.categories[7].score_out_of_10 }} </br>
+{{ cityScore.categories[1].name }} : {{ cityScore.categories[1].score_out_of_10 }} </br>
+{{ cityScore.categories[10].name }} : {{ cityScore.categories[10].score_out_of_10 }} </br>
+{{ cityScore.categories[15].name }} : {{ cityScore.categories[15].score_out_of_10 }} </br>
+{{ cityScore.categories[13].name }} : {{ cityScore.categories[13].score_out_of_10 }} </br>
 
 
-{{ urbanArea.summary }} </br>
+{{ cityScore.summary }} </br>
+
+<!-- Leaflet Maps-->
+    <div id="leaflet-maps">
+      <div id="mapid" data-longitude="{{ urbanArea.location.latlon.longitude }}"
+        data-latitude="{{ urbanArea.location.latlon.latitude }}"></div>
+    </div> 
+<!-- End Leaflet Maps-->
+
 {% for picture in images.results|slice(0,5) %}
-<img src="{{ picture.urls.thumb}}" alt="Image de {{cityScore.name}}" </img>
+<img src="{{ picture.urls.thumb}}" alt="Image de {{urbanArea.name}}" </img>
 {% endfor %}
 
-{{ dump(images.results[0].urls)}}
 
 
-{{ dump(city) }}
+{# {{ dump(images.results[0].urls)}} #}
+
+
+{# {{ dump(city) }}
 {{ dump(images) }}
-{{ dump(image) }}
- {#
-{{ dump(urbanArea) }}
+{{ dump(image) }} #}
+
+{#{{ dump(urbanArea) }} #}
 
 
-#}
 
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script src="{{ asset('js/city-view.js') }}"> </script>
 
 {% endblock %}
 

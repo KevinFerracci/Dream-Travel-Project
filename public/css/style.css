@@ -8,15 +8,16 @@ body {
  header {
    height : 15vh;
    background-color:#9ab3f5;
+   position:fixed; 
+   width: 100%;
  }
 
  nav {
    text-align: center; 
    width: 100%;
    max-height: 120px;
-   position:fixed; 
-  
- }
+   
+}
 
  nav .logo {
   height: 80px;
@@ -53,11 +54,9 @@ nav a:hover {
  /*  STYLE FOOTER */
 footer {
   background-color: #a3d8f4;
-  position: absolute;
   bottom: 0;
   height : 6%;
   width: 100%;
-
 }
 
 footer ul {

@@ -1,0 +1,25 @@
+p {
+  font-size: 50px;
+}
+
+/* CSS FOR LEAFLET */
+#mapid {
+  height: 200px;
+  width: 100%;
+  margin: auto;
+  z-index: 0;
+}
+
+#leaflet-maps {
+  margin: auto;
+  font: 18px/1.5 sans-serif;
+  z-index: 0;
+  position: relative;
+}
+
+.leaflet-maps code {
+  background: #F5F5F5;
+  padding: 2px 6px;
+}
+
+/* END CSS FOR LEAFLET */
