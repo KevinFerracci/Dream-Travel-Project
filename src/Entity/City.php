@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CityRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -42,6 +44,16 @@ class City
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Weather::class, mappedBy="city")
+     */
+    private $weather;
+
+    public function __construct()
+    {
+        $this->weather = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -112,6 +124,36 @@ class City
     public function setGeonameId($geonameId)
     {
         $this->geonameId = $geonameId;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Weather[]
+     */
+    public function getWeather(): Collection
+    {
+        return $this->weather;
+    }
+
+    public function addWeather(Weather $weather): self
+    {
+        if (!$this->weather->contains($weather)) {
+            $this->weather[] = $weather;
+            $weather->setCity($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWeather(Weather $weather): self
+    {
+        if ($this->Weather->removeElement($weather)) {
+            // set the owning side to null (unless already changed)
+            if ($weather->getCity() === $this) {
+                $weather->setCity(null);
+            }
+        }
 
         return $this;
     }

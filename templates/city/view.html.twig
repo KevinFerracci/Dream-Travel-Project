@@ -8,9 +8,18 @@
 {% endblock %}
 
 {% block container %}
-<p> Fiche de la ville {{ city.name }} </p>
+<p> Fiche de la ville {{ cityScore.name }} </p>
 
-<img src="{{ image.photos[0].image.web }}" alt="Image de {{city.name}}" </img> </br>
+
+ {% for weather in city.weather %} 
+
+ {# {{ dump(weather) }} #}
+
+Température minimale : {{ weather.tempLevelMin }}
+
+{% endfor %}
+
+<img src="{{ image.photos[0].image.web }}" alt="Image de {{cityScore.name}}" </img> </br>
 
 {{ urbanArea.categories[4].name }} : {{ urbanArea.categories[4].score_out_of_10 }} </br>
 {{ urbanArea.categories[14].name }} : {{ urbanArea.categories[14].score_out_of_10 }} </br>
@@ -23,7 +32,7 @@
 
 {{ urbanArea.summary }} </br>
 {% for picture in images.results|slice(0,5) %}
-<img src="{{ picture.urls.thumb}}" alt="Image de {{city.name}}" </img>
+<img src="{{ picture.urls.thumb}}" alt="Image de {{cityScore.name}}" </img>
 {% endfor %}
 
 {{ dump(images.results[0].urls)}}

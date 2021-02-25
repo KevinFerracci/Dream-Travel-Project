@@ -57,6 +57,11 @@ class Weather
      */
     private $UpdatedAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=City::class, inversedBy="Weather")
+     */
+    private $city;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -154,6 +159,18 @@ class Weather
     public function setUpdatedAt(?\DateTimeInterface $UpdatedAt): self
     {
         $this->UpdatedAt = $UpdatedAt;
+
+        return $this;
+    }
+
+    public function getCity(): ?City
+    {
+        return $this->city;
+    }
+
+    public function setCity(?City $city): self
+    {
+        $this->city = $city;
 
         return $this;
     }

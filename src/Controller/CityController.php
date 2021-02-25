@@ -31,6 +31,7 @@ class CityController extends AbstractController
      */
     public function view($geonameId): Response
     {
+        $city = $this->getDoctrine()->getRepository(City::class)->findbyGeonameID($geonameId);
         //4717560/ texas
         //http://localhost:8000/city/3489854 jamaica
         //https://api.teleport.org/api/cities/geonameid:2988507  paris
@@ -60,7 +61,8 @@ class CityController extends AbstractController
 
         return $this->render('city/view.html.twig', [
             'pageTitle' => $objectResponse->name,
-            'city' => $objectResponse,
+            'city' => $city, 
+            'cityScore' => $objectResponse,
             'urbanArea' => $objectScoreResponse,
             'image' => $objectResponseImage, 
             'images' => $objectUnsplashImageResponse,
