@@ -59,7 +59,7 @@ class CityController extends AbstractController
 
 
         return $this->render('city/view.html.twig', [
-            'pageTitle' => 'Paris',
+            'pageTitle' => $objectResponse->name,
             'city' => $objectResponse,
             'urbanArea' => $objectScoreResponse,
             'image' => $objectResponseImage, 
