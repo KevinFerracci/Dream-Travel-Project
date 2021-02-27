@@ -1,4 +1,4 @@
-/* Script pour afficher une map */
+/* Script to get a map for Leaflet */
 
   let latitude = document.getElementById('mapid').dataset.latitude;
   let longitude = document.getElementById('mapid').dataset.longitude;
@@ -20,8 +20,6 @@
   }).addTo(mymap);
 
   let marker = L.marker([latitude, longitude]).addTo(mymap);
-
-  /* Script pour afficher le modal */
 
   // Get the modal
   var modal = document.getElementById("myModal");
@@ -50,4 +48,235 @@
   modal.onclick = function () {
     modal.style.display = "none";
   }
+
+  /* Script pour indiquer le nom de l'image dans l'input du form */
+
+    if (document.querySelector('form')) {
+    document.getElementById('review_text').setAttribute('placeholder', 'C\'était génial, best trip ever!');
+
+
+    if (document.querySelector('form')) {
+      document.getElementById('review_text').setAttribute('placeholder', 'C\'était génial, best trip ever!');
+
+      document.getElementById('review_title').setAttribute('placeholder', 'Un été à Paris');
+
+      let input = document.getElementById('review_imageFile');
+
+      document.querySelector('.custom-file-label').textContent = 'la_tour_eiffel.jpg';
+
+      let fileName = '';
+      input.onchange = function () {
+        let name = document.querySelector('.custom-file-label').textContent = this.value.slice(12, this.value.length);
+        if (name.length > 20) {
+          fileName = name.slice(12, 20) + '...' + name.slice(name.length - 8, name.length);
+          document.querySelector('.custom-file-label').textContent = fileName;
+        }
+      }
+    }
+
+  }   
+
+    /* Set place holder in review form */
+
+    if (document.querySelector('form')) {
+      document.getElementById('review_text').setAttribute('placeholder', 'C\'était génial, best trip ever!');
+
+
+      document.getElementById('review_title').setAttribute('placeholder', 'Un été à Paris');
+
+      let input = document.getElementById('review_imageFile');
+
+      document.querySelector('.custom-file-label').textContent = 'la_tour_eiffel.jpg';
+
+      let fileName = '';
+      input.onchange = function () {
+        let name = document.querySelector('.custom-file-label').textContent = this.value.slice(12, this.value.length);
+        if (name.length > 20) {
+          fileName = name.slice(12, 20) + '...' + name.slice(name.length - 8, name.length);
+          document.querySelector('.custom-file-label').textContent = fileName;
+        }
+      };
+    }
+
+    let reviewButtons = document.querySelectorAll('.report-review-button');
+  reviewButtons.forEach(
+    function (reviewButton) {
+      reviewButton.addEventListener('click', handleReportReview);
+    }
+  )
+
+  // Script to report a comment 
+  function handleReportReview(evt) {
+    evt.preventDefault();
+    const url = this.href;
+    let span = evt.target.closest('.span-review');
+
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    }).then(
+      (response) => {
+        if (response.status == 202) {
+          console.log(response.status + ' - opération effectuée')
+        }
+        else if (response.status === 204) {
+          console.log(response.status + ' - pas de resultats')
+        }
+        else {
+          console.log(response.status + 'L\'opération a échoué')
+        }
+      })
+      .then(
+        (data) => {
+
+          span.textContent = 'L\'avis est signalé. Merci !';
+
+        }
+      );
+  }
+
+  let reviewVoteSpans = document.querySelectorAll('.review-vote');
+  let reviewId = '';
+  let spanRate = '';
+
+  reviewVoteSpans.forEach(
+    function (reviewVoteSpan) {
+
+      let heart = reviewVoteSpan.querySelector('i');
+
+      heart.addEventListener('click', changeHeart);
+
+      spanRate = document.querySelector('.span-rate');
+      spanRate.textContent = parseInt(document.querySelector('.span-rate').dataset.likescount);
+
+    }
+  ); 
+
+  // Script to like a review
+
+  function changeHeart(evt) {
+    reviewId = evt.target.dataset.reviewid;
+    evt.preventDefault();
+    let url = '/api/v1/review/' + reviewId + '/like'
+
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+      .then(
+        (response) => {
+
+          if (response.status == 200) {
+            console.log(response.status + ' - opération effectuée');
+            return response.json();
+          }
+          else {
+            console.log(response.status + 'L\'opération a échoué');
+          }
+        })
+      .then(
+        (data) => {
+
+          let icone = evt.target;
+          parentSpan = evt.target.parentNode.parentNode;
+          parentSpan.querySelector('.span-rate').innerText = data.likes;
+
+          if (icone.classList.contains('fa-heart-o')) {
+            icone.setAttribute("class", "em em-heart");
+          }
+          else {
+            icone.setAttribute("class", "fa fa-heart-o");
+          }
+
+        }
+      );
+
+  }
+
+  // Script to like a city
+
+  let divCityLike = document.querySelector('.city-likes');
+  let cityId = divCityLike.dataset.cityid;
+
+  let heart = divCityLike.querySelector('i');
+  heart.addEventListener('click', changeHeart);
+
+  function changeHeart(evt) {
+    evt.preventDefault();
+    let url = '/api/v1/city/' + cityId + '/like'
+
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+      .then(
+        (response) => {
+
+          if (response.status == 200) {
+            console.log(response.status + ' - opération effectuée');
+            return response.json();
+          }
+          else {
+            console.log(response.status + 'L\'opération a échoué');
+          }
+        })
+      .then(
+        (data) => {
+
+          let icone = evt.target;
+
+          if (icone.classList.contains('fa-heart-o')) {
+            icone.setAttribute("class", "em em-heart");
+          }
+          else {
+            icone.setAttribute("class", "fa fa-heart-o");
+          }
+
+        }
+      );
+
+  }
+
+  // Translatation of the summary
+
+  let apiKey = '';
+  let summary = document.querySelector('.city-description').dataset.summary;
+
+
+  summary = summary.replace(/(<([^>]+)>)/ig, "");
+
+
+  let firstTranslation = {};
+  fetch('/api/v1/translate/', {
+    method: 'POST',
+    body: JSON.stringify(summary),
+    headers: {
+      'Content-type': 'application/json',
+    }
+  }).then(function (response) {
+    if (response.ok) {
+      return response.json();
+    }
+    return Promise.reject(response);
+  }).then(function (data) {
+    //console.log(data);
+    document.querySelector('.city-description').innerHTML = '<br>' + data.Translation;
+
+  }).catch(function (error) {
+    console.warn('Something went wrong.', error);
+  });
+
+//Cette ligne permet de récupérer d'insérer le paragraphe dans la div concernée (fonctionne en console)
+//document.querySelector('.city-description').innerHTML = firstTranslation.data.translations[0].translatedText;
+//document.querySelector('.city-description').innerHTML = firstTranslation.Translation;
+//console.log(data)
 
