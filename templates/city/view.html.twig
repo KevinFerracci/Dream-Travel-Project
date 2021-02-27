@@ -64,7 +64,7 @@
                         </div>
                         <div class="max-temperature">
                             Max {{ weather.averageMax }}°C 
-                            <imgsrc="{{ asset('pictures/weather_images/levelTemp_' ~ weather.tempLevelMax) ~ '.png'}}"
+                            <img src="{{ asset('pictures/weather_images/levelTemp_' ~ weather.tempLevelMax) ~ '.png'}}"
                             class="thermo-img thermo-max" alt="Thermomètre" />
                         </div>
                     {% endif %}
@@ -88,8 +88,8 @@
                                     class="thermo-img thermo-min" alt="Thermomètre" /> Min {{ weather.averageMin }}°C •
                                 </div>
                                 <div class="max-temperature">
-                                    Max {{ weather.averageMax }}°C <img
-                                    src="{{ asset('pictures/weather_images/levelTemp_' ~ weather.tempLevelMax) ~ '.png'}}"
+                                    Max {{ weather.averageMax }}°C 
+                                    <img src="{{ asset('pictures/weather_images/levelTemp_' ~ weather.tempLevelMax) ~ '.png'}}"
                                     class="thermo-img thermo-max" alt="Thermomètre" />
                                 </div>
                             {% endif %}
@@ -141,6 +141,8 @@
                     Pas d'informations disponibles pour cette ville
                 </div>
             {% endif %}
+
+        </div>
        
         {# <img src="{{ image.photos[0].image.web }}" alt="Image de {{urbanArea.name}}" </img> </br> #}
         {# {% for weather in city.weather %} 

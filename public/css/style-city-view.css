@@ -36,7 +36,7 @@
   flex: 1;
   margin-left: 15px;
   font-size: 1.7em;
-  color: #263959;
+  color: #03383B;
 }
 
 #h1-user {
@@ -783,7 +783,7 @@ form {
 
   #leaflet-maps {
     position: absolute;
-    top: 480px;
+    top: 40%;
     left: 0px;
   }
 
