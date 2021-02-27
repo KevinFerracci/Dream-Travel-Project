@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\TagRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,6 +38,16 @@ class Tag
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=City::class, mappedBy="tag")
+     */
+    private $cities;
+
+    public function __construct()
+    {
+        $this->cities = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -86,6 +98,33 @@ class Tag
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|City[]
+     */
+    public function getCities(): Collection
+    {
+        return $this->cities;
+    }
+
+    public function addCity(City $city): self
+    {
+        if (!$this->cities->contains($city)) {
+            $this->cities[] = $city;
+            $city->addTag($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCity(City $city): self
+    {
+        if ($this->cities->removeElement($city)) {
+            $city->removeTag($this);
+        }
 
         return $this;
     }

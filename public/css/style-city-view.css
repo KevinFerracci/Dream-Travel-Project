@@ -265,6 +265,8 @@ p {
 
 .tags-list {
   margin: 2em auto;
+  list-style-type: none;
+  display : flex; 
 }
 
 .tags-list-language {

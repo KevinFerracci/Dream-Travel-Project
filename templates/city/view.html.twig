@@ -142,6 +142,16 @@
                 </div>
             {% endif %}
 
+            <div class="tags-container">
+                <ul class="tags-list p-0">
+                    {% for tag in city.tag %}
+                        <li><span class="badge badge-pill badge-secondary badge-tag font-weight-bold shadow-sm"
+                        style="background-color:#{{tag.color }};">{{ tag.label }}</span></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <hr class="hr-city-description">
         </div>
        
         {# <img src="{{ image.photos[0].image.web }}" alt="Image de {{urbanArea.name}}" </img> </br> #}
