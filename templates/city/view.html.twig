@@ -153,7 +153,56 @@
 
             <hr class="hr-city-description">
         </div>
+
+        {# {{ dump(images) }}
+        {{ dump(randomImages) }}
+
+        <img src= {{randomImages.results[0].urls.small}} alt = "Image de Paris">
+
+         {% for image in randomImages.results %}
+            {{ dump(image.urls.small)}}
+            <img src= {{image.urls.small}} alt = "Image de Paris">
+         {% endfor %} #}
        
+        <aside class="right-side" id="right-aside">
+            <h2 class="text-center">Galerie Photo</h2>
+
+            <div id="carouselExampleIndicators" class="carousel">
+
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                    <div class="city-pictures text-center img-gallery">
+                        {% for image in randomImages.results|slice(0, 9) %}
+                        <img id="{{ 'image' ~ random(1,50000) }}" src="{{ image.urls.small }}" alt="Image de Paris"
+                        class="img-thumbnail img-carousel" />
+                        {% endfor %}
+                    </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="city-pictures text-center">
+                            <div class="city-pictures text-center img-gallery">
+                                {% for image in randomImages.results|slice(0,9) %}
+                                <img id="{{ 'image' ~ random(1,50000) }}" src="{{ image.urls.thumb }}" alt="Image de Paris"
+                                    class="img-thumbnail img-carousel" />
+                                {% endfor %}
+                                yo
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                </ol>
+             </div> 
+
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+                <span class="close">&times;</span>
+                <img class="modal-content" id="img01">
+                {#  <div id="caption"></div> #}
+            </div>
+
         {# <img src="{{ image.photos[0].image.web }}" alt="Image de {{urbanArea.name}}" </img> </br> #}
         {# {% for weather in city.weather %} 
          {{ dump(weather) }}
@@ -177,6 +226,8 @@
         {#{{ dump(urbanArea) }} #}
        
     </div>
+
+    
 
 {% endblock %}
 

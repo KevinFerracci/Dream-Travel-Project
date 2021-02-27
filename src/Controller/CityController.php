@@ -59,6 +59,7 @@ class CityController extends AbstractController
             $objectResponseImage = null; 
             $objectUnsplashImageResponse = null; 
             $objectResponseTitleImage = null;
+            $titleImage = null;
         }
 
 
@@ -72,6 +73,7 @@ class CityController extends AbstractController
             'image' => $objectResponseImage, 
             'images' => $objectUnsplashImageResponse,
             'titleImage' => $titleImage,
+            'randomImages' => $objectResponseTitleImage,
         ]);
     }
 
