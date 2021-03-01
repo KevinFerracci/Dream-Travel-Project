@@ -55,10 +55,16 @@ class City
      */
     private $tag;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Review::class, mappedBy="city")
+     */
+    private $reviews;
+
     public function __construct()
     {
         $this->weather = new ArrayCollection();
         $this->tag = new ArrayCollection();
+        $this->reviews = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -184,6 +190,36 @@ class City
     public function removeTag(Tag $tag): self
     {
         $this->tag->removeElement($tag);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Review[]
+     */
+    public function getReviews(): Collection
+    {
+        return $this->reviews;
+    }
+
+    public function addReview(Review $review): self
+    {
+        if (!$this->reviews->contains($review)) {
+            $this->reviews[] = $review;
+            $review->setCity($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReview(Review $review): self
+    {
+        if ($this->reviews->removeElement($review)) {
+            // set the owning side to null (unless already changed)
+            if ($review->getCity() === $this) {
+                $review->setCity(null);
+            }
+        }
 
         return $this;
     }

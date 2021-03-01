@@ -37,6 +37,11 @@ class Picture
      */
     private $updatedAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Review::class, inversedBy="picture")
+     */
+    private $review;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +91,18 @@ class Picture
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getReview(): ?Review
+    {
+        return $this->review;
+    }
+
+    public function setReview(?Review $review): self
+    {
+        $this->review = $review;
 
         return $this;
     }

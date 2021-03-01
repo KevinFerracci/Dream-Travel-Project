@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ReviewRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -61,6 +63,26 @@ class Review
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $UpdatedAt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=City::class, inversedBy="reviews")
+     */
+    private $city;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="reviews")
+     */
+    private $user;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Picture::class, mappedBy="review")
+     */
+    private $picture;
+
+    public function __construct()
+    {
+        $this->picture = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -171,6 +193,60 @@ class Review
     public function setUpdatedAt(?\DateTimeInterface $UpdatedAt): self
     {
         $this->UpdatedAt = $UpdatedAt;
+
+        return $this;
+    }
+
+    public function getCity(): ?City
+    {
+        return $this->city;
+    }
+
+    public function setCity(?City $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Picture[]
+     */
+    public function getPicture(): Collection
+    {
+        return $this->picture;
+    }
+
+    public function addPicture(Picture $picture): self
+    {
+        if (!$this->picture->contains($picture)) {
+            $this->picture[] = $picture;
+            $picture->setReview($this);
+        }
+
+        return $this;
+    }
+
+    public function removePicture(Picture $picture): self
+    {
+        if ($this->picture->removeElement($picture)) {
+            // set the owning side to null (unless already changed)
+            if ($picture->getReview() === $this) {
+                $picture->setReview(null);
+            }
+        }
 
         return $this;
     }

@@ -203,6 +203,27 @@
                 {#  <div id="caption"></div> #}
             </div>
 
+            <hr class="hr-city-description">
+                <div class="card card-form form-review-container">
+                <h2 class="h2-form-title">Avez-vous déjà visité {{city.cityName}} ? </h2>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {{ form_start(formReview, {'attr': {'id': 'form_review', 'autocomplete': 'off'}}) }}
+                    {{ form_widget(formReview) }}
+                    <button class="btn form-submit">{{ button_label|default('Envoyer mon avis') }}</button>
+                    {{ form_end(formReview) }}
+
+                    {% else %}
+                    <div class="alert alert-info">Veuillez vous
+                        <a href="{{ path('app_login') }}" class="alert-link">connecter </a> pour rédiger un avis.
+                    </div>
+                    {% endif %}
+
+    </div>
+    <h2 class="text-center">Avis des utilisateurs</h2>
+
+    <div class="review-div">
+      
+
         {# <img src="{{ image.photos[0].image.web }}" alt="Image de {{urbanArea.name}}" </img> </br> #}
         {# {% for weather in city.weather %} 
          {{ dump(weather) }}

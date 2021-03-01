@@ -2,9 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Review;
 use App\Entity\City;
+use App\Entity\Picture; 
 use App\Form\CityType;
+use App\Form\ReviewType;
 use App\Repository\CityRepository;
+use App\Service\ImageUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,11 +31,49 @@ class CityController extends AbstractController
     }
 
     /**
-     * @Route("/fiche/{geonameId}", name="city_view", methods={"GET"})
+     * @Route("/fiche/{geonameId}", name="city_view", methods={"GET", "POST"})
      */
-    public function view($geonameId): Response
+    public function view(Request $request, ImageUploader $imageUploader, $geonameId): Response
     {
         $city = $this->getDoctrine()->getRepository(City::class)->findbyGeonameID($geonameId);
+
+        //form review
+        $review = new Review();
+        $formReview = $this->createForm(ReviewType::class, $review);
+        $formReview->handleRequest($request);
+
+        if ($formReview->isSubmitted() && $formReview->isValid()) {
+            $review->setCity($city);
+            // Active => 1| Inactive => 0
+            $review->setStatus(1);
+            $review->setNegativeVote(0);
+            $review->setPositiveVote(0);
+            // is not reported => 0 | is reported => 1
+            $review->setReport(0);
+            $review->setRate($formReview->get('rate')->getData());
+            $review->setCreatedAt(new \DateTime());
+            $review->setUser($this->getUser());
+
+            $filename = $imageUploader->moveFile($formReview->get('imageFile')->getData(), 'images/uploads');
+            $picture = new Picture();
+            $entityManager = $this->getDoctrine()->getManager();
+            if ($formReview->get('imageFile')->getData()) {
+                if ($formReview->get('title')->getData() === null) {
+                    $picture->setTitle($city->getCityName());
+                } else {
+                    $picture->setTitle($formReview->get('title')->getData());
+                }
+                $picture->setFilename($filename);
+                $picture->setCreatedAt(new \DateTime());
+                $picture->setReview($review);
+                $review->addPicture($picture);
+                $entityManager->persist($picture);
+            }
+            $entityManager->persist($review);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('city_view', ['geonameId' =>  $geonameId]);
+        }
         //4717560/ texas
         //http://localhost:8000/city/3489854 jamaica
         //https://api.teleport.org/api/cities/geonameid:2988507  paris
@@ -74,6 +116,7 @@ class CityController extends AbstractController
             'images' => $objectUnsplashImageResponse,
             'titleImage' => $titleImage,
             'randomImages' => $objectResponseTitleImage,
+            'formReview' => $formReview->createView(), 
         ]);
     }
 
