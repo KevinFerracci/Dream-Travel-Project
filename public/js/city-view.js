@@ -256,7 +256,7 @@
 
 
   let firstTranslation = {};
-  fetch('/api/v1/translate/', {
+  fetch('/translate/', {
     method: 'POST',
     body: JSON.stringify(summary),
     headers: {
