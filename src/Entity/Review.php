@@ -79,9 +79,15 @@ class Review
      */
     private $picture;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Like::class, mappedBy="review")
+     */
+    private $likes;
+
     public function __construct()
     {
         $this->picture = new ArrayCollection();
+        $this->likes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -249,5 +255,45 @@ class Review
         }
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Like[]
+     */
+    public function getLikes(): Collection
+    {
+        return $this->likes;
+    }
+
+    public function addLike(Like $like): self
+    {
+        if (!$this->likes->contains($like)) {
+            $this->likes[] = $like;
+            $like->setReview($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLike(Like $like): self
+    {
+        if ($this->likes->removeElement($like)) {
+            // set the owning side to null (unless already changed)
+            if ($like->getReview() === $this) {
+                $like->setReview(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function isLikedByUser(User $user): bool
+    {
+        foreach ($this->likes as $like) {
+            if ($like->getUser() === $user) {
+                return true;
+            }
+        }
+        return false;
     }
 }

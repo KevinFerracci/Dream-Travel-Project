@@ -16,6 +16,24 @@ use Symfony\Component\Routing\Annotation\Route;
 class ReviewController extends AbstractController
 {
     /**
+     * @Route("/{id}/report", name="review_report", requirements={"id"="\d+"}, methods={"POST"})
+     */
+    public function report($id)
+    {
+
+        $review = $this->getDoctrine()->getRepository(Review::class)->find($id);
+        $review->setIsReported(true);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($review);
+        $entityManager->flush();
+
+        if ($review->GetIsReported() === true) {
+            return new Response('Message signalé', Response::HTTP_ACCEPTED);
+        }
+    }
+
+    /**
      * @Route("/", name="review_index", methods={"GET"})
      */
     public function index(ReviewRepository $reviewRepository): Response

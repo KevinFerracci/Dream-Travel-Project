@@ -117,6 +117,7 @@ class CityController extends AbstractController
             'titleImage' => $titleImage,
             'randomImages' => $objectResponseTitleImage,
             'formReview' => $formReview->createView(), 
+            'reviews' => $city->getReviews(),
         ]);
     }
 

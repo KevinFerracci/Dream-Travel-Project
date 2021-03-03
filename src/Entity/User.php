@@ -97,9 +97,21 @@ class User implements UserInterface
      */
     private $reviews;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Badge::class, inversedBy="users")
+     */
+    private $badge;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Like::class, mappedBy="user")
+     */
+    private $likes;
+
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
+        $this->badge = new ArrayCollection();
+        $this->likes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -351,6 +363,60 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($review->getUser() === $this) {
                 $review->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Badge[]
+     */
+    public function getBadge(): Collection
+    {
+        return $this->badge;
+    }
+
+    public function addBadge(Badge $badge): self
+    {
+        if (!$this->badge->contains($badge)) {
+            $this->badge[] = $badge;
+        }
+
+        return $this;
+    }
+
+    public function removeBadge(Badge $badge): self
+    {
+        $this->badge->removeElement($badge);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Like[]
+     */
+    public function getLikes(): Collection
+    {
+        return $this->likes;
+    }
+
+    public function addLike(Like $like): self
+    {
+        if (!$this->likes->contains($like)) {
+            $this->likes[] = $like;
+            $like->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLike(Like $like): self
+    {
+        if ($this->likes->removeElement($like)) {
+            // set the owning side to null (unless already changed)
+            if ($like->getUser() === $this) {
+                $like->setUser(null);
             }
         }
 

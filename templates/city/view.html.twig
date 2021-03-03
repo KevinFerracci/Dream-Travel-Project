@@ -222,7 +222,145 @@
     <h2 class="text-center">Avis des utilisateurs</h2>
 
     <div class="review-div">
-      
+      <!-- Beginning Caroussel -->
+      <div id="carouselExampleIndicators-review" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+
+            {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+            {% set max = 5 %}
+            {% if reviews|length > max %}
+            {% set seeMoreContent = true %}
+            {% endif %}
+            {% elseif is_granted('IS_AUTHENTICATED_FULLY') %}
+            {% set max = reviews|length %}
+            {% endif %}
+            {% for review in reviews|reverse|slice(0, max) %}
+            <div class="accordion review-accordion" id="accordion-{{ review.id }}">
+              <div class="card">
+                <div class="card-header" id="headingOne">
+                  <p class="report-button  m-0 text-right">
+                    <a class="report-button py-0 m-0" data-toggle="collapse" href="#signal-{{ review.id }}"
+                      role="button" aria-expanded="false" aria-controls="collapseExample">
+                      ...
+                    </a>
+                  </p>
+                  <div class="collapse text-center text-danger report-message mx-0" id="signal-{{ review.id }}">
+                    <span class="span-review"><a href="{{ path('review_report', {'id': review.id } ) }}"
+                        class="report-review-button" data-reviewId="{{ review.id }}"> <i class="em em-no_entry"
+                          aria-role="presentation" aria-label="NO ENTRY"></i>Avis inapproprié, je signale!</a></span>
+                  </div>
+                  <h3 class="card-title">
+                    {% if review is defined %}
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <a class="username" href="{{ path('user_show', { 'id': review.user.id}) }}"><img
+                        src="{{ asset('pictures/avatars/' ~ review.user.avatar) }}" alt="Photo de profil"
+                        class="user-profile-picture" style="width:13%; height:auto;"> {{ review.user.username }}</a>
+                    {% else %}
+                    <p class="m-0"><img src="{{ asset('pictures/avatars/' ~ review.user.avatar) }}" alt="Photo de profil"
+                        class="user-profile-picture" style="width:13%; height:auto;"> {{ review.user.username }}</p>
+                    {% endif %}
+
+                    {# displays the highest level badge reached #}
+                    {% set badgeLevel = [] %}
+                    {% for key, badge in review.user.badge %}
+                    {% set badgeLevel = badgeLevel|merge([badge.badgeString]) %}
+                    {% endfor %}
+                    {% for badge in review.user.badge %}
+                    {% if badge.badgeString == max(badgeLevel) %}
+                    <p class="user-points">
+
+                      {{ review.user.points|default(5)}} points
+                      <img src="{{ asset('pictures/badges/' ~ badge.filename ~ '.svg' ) }}" alt="Badge {{ badge.label }}"
+                        class="city-user-badge" /></p>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                  </h3>
+                  <h4 class="card-badge"> </h4>
+
+                  {% set difference = date(review.createdAt|date("Y/m/d")).diff(date('now'|date('Y/m/d'))) %}
+                  {% set leftDays = difference.days %}
+                  {% dump(leftDays) %}
+
+                  <h4 class="h4-review"><em>Avis publié il y a {{ leftDays }} jour{% if leftDays > 1 %}s{% endif %}</em>
+                  </h4>
+                  <h4 class="h4-review"><strong>Visite effectuée</strong> le {{review.travelDate.date|date("d/m/Y")}}
+                  </h4>
+                  <h4>
+                    <strong class="mr-2">Appréciation</strong>
+
+                    {% set rateCircleFull = '<i class="fa fa-circle" aria-hidden="true"></i>' %}
+                    {% set rateCircleEmpty = '<i class="fa fa-circle-thin" aria-hidden="true"></i>' %}
+                    {% for i in 1..5 %}
+                    {% if i <= review.rate  %}
+                    {{ rateCircleFull|raw }}
+                    {% else %}
+                    {{ rateCircleEmpty|raw }}
+                    {% endif %}
+
+                    {% endfor %}
+
+                  </h4>
+                  <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-center btn-see-more" type="button" data-toggle="collapse"
+                      data-target="#collapse-{{ review.id }}" aria-expanded="true" aria-controls="collapseOne">
+                      Voir plus...
+                    </button>
+                  </h2>
+                </div>
+
+                <div id="collapse-{{ review.id }}" class="collapse" aria-labelledby="headingOne"
+                  data-parent="#accordion-{{ review.id }}">
+                  <div class="card-body">
+
+                    <!-- Default dropleft button -->
+                    <p class="card-text text-justify">{{ review.text|nl2br }}</p>
+
+                    <div class="review-votes d-flex justify-content-end">
+                      <span class="review-vote like">
+                        {% if app.user and review.isLikedByUser(app.user) %}
+                        <i class="em em-heart" aria-role="presentation" data-reviewid="{{ review.id }}"></i>
+                        {% else %}
+                        <i class="fa fa-heart-o" aria-role="presentation" data-reviewid="{{ review.id }}"></i>
+                        {% endif %}
+                      </span>
+                      <span class="span-rate" data-likesCount=""></span>
+                    </div>
+
+                    <div class="city-pictures text-center">
+                      {% for picture in review.picture %}
+                      <img src="{{ asset('images/uploads/' ~ picture.filename) }}"
+                        alt="Image de {{city.cityName}} postée par un utilisateur." class="user-image">
+                      {% endfor %}
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% else %}
+            <p class="text-center"><em>Il n'y a pas encore d'avis pour cette destination. Laissez-nous le vôtre!</em>
+            </p>
+            {% endfor %}
+            {% if seeMoreContent is defined %}
+            <div class="alert alert-info  mt-4">Veuillez vous
+              <a href="{{ path('app_login') }}" class="alert-link">connecter </a> pour voir tous les avis.
+            </div>
+            {% else %}
+            {% if is_granted('IS_AUTHENTICATED_FULLY')  %}
+          </div>
+        </div>
+      </div>
+      {#  <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators-review" data-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators-review" data-to="1"></li>
+        <li data-target="#carouselExampleIndicators-review" data-to="2"></li>
+      </ol> #}
+      <!-- End Caroussel -->
+    </div>
+    {% endif %}
+    {% endif %}
 
         {# <img src="{{ image.photos[0].image.web }}" alt="Image de {{urbanArea.name}}" </img> </br> #}
         {# {% for weather in city.weather %} 

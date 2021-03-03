@@ -49,7 +49,7 @@
     modal.style.display = "none";
   }
 
-  /* Script pour indiquer le nom de l'image dans l'input du form */
+  /* Script to indicate the name of the image in the form input*/
 
     if (document.querySelector('form')) {
     document.getElementById('review_text').setAttribute('placeholder', 'C\'était génial, best trip ever!');
