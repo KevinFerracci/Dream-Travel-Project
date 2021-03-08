@@ -18,7 +18,7 @@ class CityRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, City::class);
     }
-
+    
     public function findByGeonameId($geonameId){
         $builder = $this->createQueryBuilder('city');
         $builder->where('city.geonameId = :geonameId');
@@ -34,6 +34,28 @@ class CityRepository extends ServiceEntityRepository
         $builder = $this->createQueryBuilder("city");
         $builder->where("city.cityName LIKE :partialName");
         $builder->setParameter('partialName',$partialName.'%');
+        $builder->orderBy('city.cityName', 'ASC');
+        $query = $builder->getQuery();
+       
+        return $query->execute();
+    }
+
+    public function findByPartialCountryName($partialName){
+        $builder = $this->createQueryBuilder('city');
+        $builder->distinct(true);
+        $builder->where('city.countryName LIKE :partialName');
+        $builder->setParameter('partialName',$partialName.'%');
+        $builder->orderBy('city.countryName', 'ASC');
+        $builder->groupBy('city.countryName');
+        $query = $builder->getQuery();
+       
+        return $query->execute();
+    }
+
+    public function findByCountryName($countryName){
+        $builder = $this->createQueryBuilder('city');
+        $builder->where('city.countryName LIKE :countryName');
+        $builder->setParameter('countryName',$countryName);
         $builder->orderBy('city.cityName', 'ASC');
         $query = $builder->getQuery();
        

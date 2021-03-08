@@ -28,6 +28,8 @@ use Symfony\Component\Serializer\Serializer;
           $search = $request->query->get("city_name");
   
           $cities = $this->getDoctrine()->getRepository(City::class)->findByPartialName($search);
+          
+
   
           if(empty($cities)){
               
@@ -40,5 +42,27 @@ use Symfony\Component\Serializer\Serializer;
   
           return $this->json($json);
       }
+
+      /**
+     * @Route("/country", name="country_list", methods={"GET"})
+     */
+    public function listCountries(CityRepository $cityRepository, ObjectNormalizer $objetNormalizer, Request $request)
+    {
+
+        $search = $request->query->get('country_name');
+
+        $countries = $this->getDoctrine()->getRepository(City::class)->findByPartialCountryName($search);
+
+        if (empty($countries)) {
+
+            return new Response('Pas de resultats', Response::HTTP_NO_CONTENT);
+        }
+
+        $serializer = new Serializer([new DateTimeNormalizer(), $objetNormalizer]);
+
+        $json = $serializer->normalize($countries, null, ['groups' => 'api_city']);
+
+        return $this->json($json);
+    }
   
  }
