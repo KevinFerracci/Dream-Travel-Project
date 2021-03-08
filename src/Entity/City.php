@@ -6,6 +6,7 @@ use App\Repository\CityRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=CityRepository::class)
@@ -16,27 +17,32 @@ class City
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"api_city"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=64)
+     * @Groups({"api_city"})
      */
     private $cityName;
 
     /**
      * @ORM\Column(type="string", length=64)
+     * @Groups({"api_city"})
      */
     private $countryName;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"api_city"})
      */
     private $geonameId;
 
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"api_city"})
      */
     private $createdAt;
 
@@ -95,6 +101,16 @@ class City
 
         return $this;
     }
+
+    /**
+     * @Groups({"api_city"})
+     */
+    public function getUrlCity()
+    {
+        return '/city/fiche/' . $this->getGeonameId();
+        //return 'http://' . $_SERVER['SERVER_NAME'] . '/city/' . $this->getGeonameId();
+    }
+
 
     public function getCreatedAt(): ?\DateTimeInterface
     {

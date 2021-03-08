@@ -13,7 +13,7 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
 /**
- * @Route("/api", name="api")
+ * @Route("/api", name="api_")
  */
 
  class CityController extends AbstractController

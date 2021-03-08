@@ -75,7 +75,7 @@ class CityController extends AbstractController
             return $this->redirectToRoute('city_view', ['geonameId' =>  $geonameId]);
         }
         //4717560/ texas
-        //http://localhost:8000/city/3489854 jamaica
+        //http://localhost:8000/city//fiche/3489854 jamaica
         //https://api.teleport.org/api/cities/geonameid:2988507  paris
         $jsonString = file_get_contents('https://api.teleport.org/api/cities/geonameid:' . $geonameId);
 
