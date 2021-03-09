@@ -2,6 +2,8 @@
 
 {% block stylesheets %}
 
+  {{ parent() }}
+
 <!-- Stylesheet GOOGLE FONT -->
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Yeseva+One&display=swap"
     rel="stylesheet">
@@ -27,14 +29,15 @@
         informations dans une bucketlist.</p>
     {% endif %}
 
-<div class="city-list-result city-list-index">
-   
+    <div class="city-list-result city-list-index">
+
+
     {% for result in arrayMatching|sort((a, b) => b.value <=> a.value)|slice(0,8) %}
    
-    <a href="{{ path('city_show', { geonameId : result.city.geonameId }) }}">
+    <a href="{{ path('city_view', { geonameId : result.city.geonameId }) }}">
         <div class="city-card" data-name="{{ result.city.cityName }}" data-geonameid="{{ result.city.geonameId }}">
             <img class="city-img" src="" alt="Image de {{ result.city.cityName }}"
-                onerror="this.src='{{ asset('images/loader.gif') }}'" />
+                onerror="this.src='{{ asset('pictures/loader.gif') }}'" />
             <p class="city-name">{{ result.city.cityName }}</p>
         </div>
     </a>
@@ -126,7 +129,7 @@
 
             // Récupération des images de ville
 
-            fetch('/api/v1/image/' + cityName)
+            fetch('/api/image/' + cityName)
                 .then(
                     (response) => {
                         return response.status == 200 ?

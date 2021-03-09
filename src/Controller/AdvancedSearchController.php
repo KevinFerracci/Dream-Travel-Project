@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 class AdvancedSearchController extends AbstractController
 {
     /**
-     * @Route("/advanced-search", name="advanced_search", methods={"GET", "POST"})
+     * @Route("/recherche-avancée", name="advanced_search", methods={"GET", "POST"})
      */
     public function index(Request $request, CityRepository $cityRepository, SearchMatchTag $searchMatchTag, SessionInterface $session)
     {
@@ -86,7 +86,8 @@ class AdvancedSearchController extends AbstractController
             $session->set('endDate', $form->get('endDate')->getData());
 
             return $this->redirectToRoute('city_list_index',[
-                $form->getData()
+                $form->getData(),
+                'pageTitle' => 'Liste des villes',
             ]);
         }
 

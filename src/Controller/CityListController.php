@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\CityList;
+use App\Entity\User;
+use App\Form\AdvancedSearchType;
 use App\Form\CityListType;
 use App\Repository\CityListRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

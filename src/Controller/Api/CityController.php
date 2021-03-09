@@ -11,6 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
+use App\Service\QueryApi;
 
 /**
  * @Route("/api", name="api_")
@@ -63,6 +64,26 @@ use Symfony\Component\Serializer\Serializer;
         $json = $serializer->normalize($countries, null, ['groups' => 'api_city']);
 
         return $this->json($json);
+    }
+
+      /**
+     * @Route("/image/{cityName}", name="image_city", methods={"GET"})
+     */
+    public function cityImage(CityRepository $cityRepository, ObjectNormalizer $objetNormalizer, Request $request, QueryApi $queryApi, $cityName)
+    {
+
+        $cityImage = $queryApi->cityDataImage($cityName);
+
+
+        if (empty($cityImage)) {
+
+            return new Response('Pas de resultats', Response::HTTP_NO_CONTENT);
+        }
+
+        /*  $serializer = new Serializer([new DateTimeNormalizer(), $objetNormalizer]);
+        $json = $serializer->normalize($cityImage, null, ['groups' => 'api_v1_city']); */
+
+        return $this->json($cityImage);
     }
   
  }

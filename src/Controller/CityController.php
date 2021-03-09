@@ -13,12 +13,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * @Route("/city")
  */
 class CityController extends AbstractController
 {
+
+    private $session;
+
+    public function __construct(SessionInterface $session)
+    {
+        $this->session = $session;
+    }
+
     /**
      * @Route("/", name="city_index", methods={"GET"})
      */
@@ -74,9 +83,7 @@ class CityController extends AbstractController
 
             return $this->redirectToRoute('city_view', ['geonameId' =>  $geonameId]);
         }
-        //4717560/ texas
-        //http://localhost:8000/city//fiche/3489854 jamaica
-        //https://api.teleport.org/api/cities/geonameid:2988507  paris
+        
         $jsonString = file_get_contents('https://api.teleport.org/api/cities/geonameid:' . $geonameId);
 
         $objectResponse = json_decode($jsonString);
@@ -145,15 +152,7 @@ class CityController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="city_show", methods={"GET"})
-     */
-    public function show(City $city): Response
-    {
-        return $this->render('city/show.html.twig', [
-            'city' => $city,
-        ]);
-    }
+  
 
     /**
      * @Route("/{id}/edit", name="city_edit", methods={"GET","POST"})
