@@ -6,22 +6,44 @@ use App\Entity\CityList;
 use App\Form\CityListType;
 use App\Repository\CityListRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Service\QueryApi;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * @Route("/city/list")
  */
 class CityListController extends AbstractController
 {
+    private $session;
+
+    public function __construct(SessionInterface $session)
+    {
+        $this->session = $session;
+    }
+
     /**
      * @Route("/", name="city_list_index", methods={"GET"})
      */
-    public function index(CityListRepository $cityListRepository): Response
+    public function index(Request $request, CityListRepository $cityListRepository): Response
     {
+        $arrayMatching = $this->session->get('arrayMatching');
+        $searchStartDate = $this->session->get('arrayMatching');
+        $searchEndDate = $this->session->get('arrayMatching');
+
+
+        $cityList = new CityList();
+        $form = $this->createForm(CityListType::class, $cityList);
+        $form->handleRequest($request);
+
         return $this->render('city_list/index.html.twig', [
-            'city_lists' => $cityListRepository->findAll(),
+            'arrayMatching' => $arrayMatching,
+            'searchStartDate' => $searchStartDate,
+            'searchEndDate' => $searchEndDate,
+            'city_list' => $cityList,
+            'form' => $form->createView(),
         ]);
     }
 

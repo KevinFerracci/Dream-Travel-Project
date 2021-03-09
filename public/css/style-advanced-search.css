@@ -1,4 +1,4 @@
-main {
+/*main {
   top : 0%;
   height: 80vh;
 }
@@ -10,4 +10,449 @@ main {
   height: 100%;
   width: 100%;
   position: relative; 
+} */
+
+/*  STYLE FOR HEADER */
+header {
+  height: 50px;
+}
+
+.badge {
+  font-size: 2.5em;
+  padding: 0.6em;
+  font-weight: 400;
+}
+
+nav {
+  font-family: 'Caveat', cursive;
+}
+
+/*  STYLE ADVANCED_SEARCH */
+
+main {
+  height: 80%;
+}
+
+.container-fluid {
+  background-color: hsl(214, 15%, 91%, 0.8);
+  min-height: 100%;
+  min-width: 100%;
+  padding-bottom: 0;
+}
+
+h1 {
+  font-family: 'Yeseva One', cursive;
+  font-size: 1.4em;
+  align-self: center;
+  color: #263959;
+  margin: 0em;
+  margin-top: 20px;
+}
+
+a.search-redirection {
+  font-size: 1em;
+  color: #28a745;
+}
+
+#form-advanced-search p {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+#advanced_search_startDate,
+#advanced_search_endDate
+{
+  margin-bottom: 1rem;
+}
+
+
+form {
+  height: 100%;
+  width: 80%;
+  margin: auto;
+  position: relative;
+  padding-bottom:2em;
+}
+
+fieldset {
+  all:none;
+  border-radius: 10px;
+}
+
+input#search {
+  width: 100%;
+  margin: 0;
+}
+
+
+.card-body {
+  padding: 0;
+}
+
+.card-body a {
+    color: #55967e;
+}
+
+.card-body:hover a {
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.form-control {
+    border: none;
+}
+
+#search {
+  width: 80%;
+  margin: auto;
+}
+
+#search-results {
+  position: absolute;
+  width: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 340px;
+}
+
+.search-error-hidden {
+  display:none;
+  top: 210px;
+}
+
+
+
+.form-control:hover,
+.accordion:hover {
+    border-color: #55967e;
+    -webkit-box-shadow: 0px 0px 3px 0px rgba(87, 130, 78, 1);
+    -moz-box-shadow: 0px 0px 3px 0px rgba(87, 130, 78, 1);
+    box-shadow: 0px 0px 3px 0px rgba(87, 130, 78, 1);
+}
+
+.form-container-search code {
+    background: #F5F5F5;
+    padding: 2px 6px;
+}
+
+.card-header {
+    background-color: white;
+    height: calc(1.5em + .75rem + 2px);
+    border-radius: .25rem;
+}
+
+#landscape-label,
+#places-label,
+#activities-label
+{
+  font-size: 1rem;
+  font-weight: 400;
+  color: #484F56;
+  background-color: white;
+}
+
+
+#landscape-label:focus,
+#places-label:focus,
+#activites-label:focus
+{
+      outline: none;
+}
+
+#advanced_search_sportingActivities,
+#advanced_search_landscape,
+#advanced_search_placesToVisit
+{
+    padding: 10px;
+    background-color: white;
+}
+
+.form-check {
+    margin-left: 40px;
+}
+
+.form-submit,
+.form-reset {
+  font-size: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  background-color: #56967D;
+  border-radius: 2px;
+  padding: 0.5em;
+  width: 49%;
+}
+
+.form-reset {
+  background-color: tomato;
+}
+
+.form-submit:hover,
+.form-submit:active
+.form-submit:focus
+{
+  border: 1px solid #56967D;
+  box-shadow: none;
+  color: #56967D;
+  background-color: white;
+}
+
+.form-reset:hover,
+.form-reset:active,
+.form-reset:focus
+{
+  border: 1px solid tomato;
+  color: tomato;
+  background-color: white;
+  box-shadow: none;
+}
+
+.card-body-country {
+  
+  border: #55967e;
+  -webkit-box-shadow: 0px 0px 3px 0px rgba(87, 130, 78, 1);
+  -moz-box-shadow: 0px 0px 3px 0px rgba(87, 130, 78, 1);
+  box-shadow: 0px 0px 3px 0px rgba(87, 130, 78, 1);
+  background-color: white;
+  color: #55967e;
+  position: relative;
+  width: 91%;
+  margin: auto;
+  top: -67px;
+  height: calc(1.5em + .75rem + 2px);
+  padding-left: 10px;
+  padding-top: 5px;
+}
+
+.card-body-country:hover{
+    background-color: #55967e;
+    color: whitesmoke;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #03383B;
+}
+
+
+/*  END STYLE ADVANCED_SEARCH */
+
+
+/*  STYLE FOOTER */
+footer {
+  background-color: hsl(214, 15%, 91%, 0.8);
+  width: 100%;
+  height: 50px;
+
+
+}
+
+footer .nav {
+  display: flex;
+  justify-content: space-around;
+
+}
+
+footer,
+footer a {
+  padding-top: 8px;
+  font-size: .9em;
+  color: #55967e;
+}
+
+footer a:active,
+footer a:focus {
+  color: #3d6b58;
+}
+
+/*  END STYLE FOOTER */
+
+@media (max-width: 360px) { 
+.search-error-hidden {
+  top: 210px;
+}
+
+}
+
+@media (min-width: 360px) and (max-width: 411px) { 
+.search-error-hidden {
+  top: 210px;
+}
+
+}
+
+
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+
+body {
+  height: 100%;
+  position: relative;
+}
+
+header {
+  height: 50px;
+}
+
+
+#search-results {
+  width: 84%;
+  top: 375px;
+}
+
+.search-error-show {
+  top: 250px;
+}
+
+
+footer {
+  background-color: hsl(214, 15%, 91%, 0.8);
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  bottom: 0;
+}
+
+h1 {
+  font-size: 1.8em;
+}
+
+p {
+  font-size: 1.2em;
+  width: 60%;
+  margin: auto;
+}
+
+
+.form-submit, .form-reset {
+margin-bottom: 100px;
+}
+
+a.search-redirection, footer a {
+  font-size: 1.2em;
+  color: #55967e;
+  z-index: 1;
+}
+
+a.search-redirection:focus,
+a.search-redirection:active,
+footer a:active,
+footer a:focus 
+{
+  color: #3d6b58;
+}
+
+}
+
+
+@media (min-width: 992px) { 
+
+body{
+  position: relative;
+  height: 100vh;
+}
+
+#form-advanced-search {
+  margin-top: 200px;
+  width: 60%;
+  margin: auto;
+}
+
+h1 {
+  font-size: 1.8em;
+}
+
+p {
+  font-size: 1em;
+  width: 60%;
+  margin: auto;
+}
+
+a.search-redirection, footer a {
+  font-size: 1em;
+  color: #55967e;
+}
+
+.form-submit, .form-reset {
+  margin-bottom: 55px;
+}
+
+form {
+  width: 60%;
+}
+
+#search-results {
+  width: 38%;
+  top: 350px;
+}
+
+.search-error-hidden {
+  top: 220px;
+}
+
+footer {
+  padding-top: 4px;
+  font-size: 1.2em;
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  bottom: 0px;
+}
+
+img.website-logo{
+  width: 200px;
+  position: absolute;
+  margin-top: -30px;
+  padding-right: 40px;
+  padding-bottom: 52px;
+}
+
+
+}
+
+@media (min-width: 1400px) { 
+
+body{
+  position: relative;
+  height: 100%;
+}
+
+#search-results {
+  width: 38.5%;
+  top: 420px;
+}
+
+.search-error-show {
+  top: 290px;
+}
+
+img.website-logo{
+  width: 200px;
+  position: absolute;
+  margin-top: -30px;
+  padding-right: 40px;
+  padding-bottom: 52px;
+  left: 45%; 
+}
+
+footer {
+  position: absolute;
+  bottom: 0px;
+}
+
+}
+
+@media (min-width: 1600px) { 
+
+#search-results {
+  width: 39%;
+  top: 395px;
+}
+
+.search-error-show {
+  top: 260px;
+}
+
 }

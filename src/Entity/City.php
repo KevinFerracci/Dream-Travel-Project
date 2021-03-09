@@ -66,11 +66,17 @@ class City
      */
     private $reviews;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=CityList::class, mappedBy="cities")
+     */
+    private $cityLists;
+
     public function __construct()
     {
         $this->weather = new ArrayCollection();
         $this->tag = new ArrayCollection();
         $this->reviews = new ArrayCollection();
+        $this->cityLists = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -235,6 +241,33 @@ class City
             if ($review->getCity() === $this) {
                 $review->setCity(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CityList[]
+     */
+    public function getCityLists(): Collection
+    {
+        return $this->cityLists;
+    }
+
+    public function addCityList(CityList $cityList): self
+    {
+        if (!$this->cityLists->contains($cityList)) {
+            $this->cityLists[] = $cityList;
+            $cityList->addCity($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCityList(CityList $cityList): self
+    {
+        if ($this->cityLists->removeElement($cityList)) {
+            $cityList->removeCity($this);
         }
 
         return $this;

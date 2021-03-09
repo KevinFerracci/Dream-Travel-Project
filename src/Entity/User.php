@@ -107,11 +107,17 @@ class User implements UserInterface
      */
     private $likes;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=CityList::class, mappedBy="users")
+     */
+    private $cityList;
+
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
         $this->badge = new ArrayCollection();
         $this->likes = new ArrayCollection();
+        $this->cityList = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -418,6 +424,33 @@ class User implements UserInterface
             if ($like->getUser() === $this) {
                 $like->setUser(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CityList[]
+     */
+    public function getCityList(): Collection
+    {
+        return $this->cityList;
+    }
+
+    public function addCityList(CityList $cityList): self
+    {
+        if (!$this->cityList->contains($cityList)) {
+            $this->cityList[] = $cityList;
+            $cityList->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCityList(CityList $cityList): self
+    {
+        if ($this->cityList->removeElement($cityList)) {
+            $cityList->removeUser($this);
         }
 
         return $this;

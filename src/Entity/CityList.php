@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CityListRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,6 +38,22 @@ class CityList
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="cityList")
+     */
+    private $users;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=City::class, inversedBy="cityLists")
+     */
+    private $city;
+
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+        $this->city = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -86,6 +104,54 @@ class CityList
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        $this->users->removeElement($user);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|City[]
+     */
+    public function getCity(): Collection
+    {
+        return $this->city;
+    }
+
+    public function addCity(City $city): self
+    {
+        if (!$this->city->contains($city)) {
+            $this->city[] = $city;
+        }
+
+        return $this;
+    }
+
+    public function removeCity(City $city): self
+    {
+        $this->cities->removeElement($city);
 
         return $this;
     }

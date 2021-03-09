@@ -1,0 +1,277 @@
+/*  STYLE FOR HEADER */
+
+header {
+  height: 50px;
+}
+
+.badge {
+  font-size: 2.5em;
+  padding: 0.6em;
+  font-weight: 400;
+}
+
+nav {
+  font-family: 'Caveat', cursive;
+}
+
+/*  STYLE CITY_LIST_INDEX */
+.container-fluid {
+  min-height: 100%;
+  min-width: 100%;
+  padding-bottom: 0;
+}
+
+h1 {
+  font-family: 'Yeseva One', cursive;
+  font-size: 1.4em;
+  align-self: center;
+  color: #263959;
+  margin-top: 20px;
+  text-align: center;
+
+}
+
+.city-list-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.city-card {
+  position: relative;
+}
+
+.intro {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.anonymous {
+  margin-top: 0px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.city-img {
+  width: 300px;
+  height: 200px;
+  background-color: white;
+}
+
+.city-name {
+  font-family: 'Yeseva One', cursive;
+  font-size: 2em;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 20px;
+  width: min-content;
+}
+
+.save-list-button {
+  font-size: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  margin: 0 auto 30px auto;
+  color: white;
+  background-color: #56967D;
+  border-radius: 2px;
+  padding: 0.5em;
+}
+
+a {
+  color: #56967D;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+
+/*  END STYLE CITY_LIST_INDEX */
+
+/*  STYLE CITY_LIST_SHOW */
+.container-fluid {
+  background-color: hsl(214, 15%, 91%, 0.8);
+  min-height: 100%;
+  min-width: 100%;
+  padding-bottom: 0;
+}
+
+.city-list-result-show {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.city-list-card {
+  padding: 10px;
+  margin: 10px;
+  margin-top: 20px;
+  min-height: 295px;
+}
+
+h5 {
+  font-family: 'Yeseva One', cursive;
+  font-size: 1.1em;
+  align-self: center;
+  color: #263959;
+}
+
+.img-thumbnail {
+  margin: auto;
+  margin-top: 10px;
+  padding: 0;
+  border: none;
+  flex: 1;
+  border-radius: 50%;
+
+  max-height: 100px;
+
+  -webkit-box-shadow: 0px 0px 1px -5px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 1px -5px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 1px -5px rgba(0, 0, 0, 0.75);
+}
+
+/*  END STYLE CITY_LIST_SHOW */
+
+/*  STYLE FOOTER */
+footer {
+  background-color: hsl(214, 15%, 91%, 0.8);
+  width: 100%;
+  height: 50px;
+
+}
+
+footer .nav {
+  display: flex;
+  justify-content: space-around;
+}
+
+footer,
+footer a {
+  font-size: .9em;
+  color: #55967e;
+}
+
+footer a:active,
+footer a:focus {
+  font-weight: bold;
+  color: #3d6b58;
+}
+
+/*  END STYLE FOOTER */
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 1.8em;
+  }
+
+  p {
+    font-size: 1.2em;
+  }
+
+  .city-img {
+    width: 500px;
+    height: 300px;
+  }
+
+  .city-name {
+    width: unset;
+  }
+
+
+
+}
+
+@media (min-width: 992px) {
+
+  body {
+    height: 100vh;
+    position: relative;
+  }
+
+  .city-list-result {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 70%;
+    margin: auto;
+    padding: 45px;
+  }
+
+  .city-list-index {
+    width: 60%;
+  }
+
+  .city-img {
+    width: 340px;
+    height: 240px;
+  }
+
+  .city-name {
+    width: max-content;
+  }
+
+  footer nav{
+    position: absolute;
+    bottom: 0px;
+    font-size: 1.2em;
+  }
+
+
+  .city-list-result-show {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 60%;
+    margin: auto;
+    justify-content: space-around;
+    padding: 35px;
+  }
+
+  .about-card {
+    min-height: 300px;
+  }
+
+}
+
+@media (min-width: 1200px) {
+
+  .required {
+    margin-left: 15px; 
+  }
+
+  .save-list-button {
+    margin-left: 20px; 
+  }
+
+  body {
+    height: 100vh;
+    position: relative;
+  }
+
+  footer nav{
+    position: absolute;
+    bottom: 0px;
+  }
+
+  .city-list-index {
+    width: 50%;
+  }
+
+  .about-card {
+    min-height: 300px;
+  }
+
+  img.website-logo{
+    width: 200px;
+    position: absolute;
+    margin-top: -30px;
+    padding-right: 40px;
+    padding-bottom: 52px;
+    left: 45%; 
+  }
+}
