@@ -66,9 +66,7 @@
 <script>
     let currentUrl = document.location.href;
     //(' URL : \n' +urlcourante);  
-
     let btnSave = document.getElementById("save_list");
-
     if(btnSave !=  null){
         btnSave.addEventListener('click', function (evt) {
             evt.preventDefault();
@@ -112,23 +110,17 @@
         })
     
     }
-
     
     let cities = document.querySelectorAll('.city-card');
-
     let cityName = '';
     let cityId = '';
     cities.forEach(
-
         function (city) {
             let cityName = city.dataset.name;
             //cityName = cityName.replace(/\s/g,'');
             cityName = cityName.replace(/\s/g, '-');
             let cityId = city.dataset.geonameid;
-
-
             // Récupération des images de ville
-
             fetch('/api/image/' + cityName)
                 .then(
                     (response) => {
@@ -137,10 +129,8 @@
                                 //console.log(response.status + ' - opération effectué'),
                                 response.json()
                             )
-
                             :
                             (response.status === 204) ? response.status + ' - pas de resultats'
-
                                 :
                                 console.log('L\'opération a échoué')
                     })
@@ -148,15 +138,10 @@
                     (data) => {
                         let imageElement = city.querySelector('img');
                         imageElement.setAttribute('src', data.thumb)
-
-
                     }
                 );
-
         }
     )
-
-
 </script>
 
 {% endblock %}      
