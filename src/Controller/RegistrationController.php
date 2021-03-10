@@ -62,9 +62,9 @@ class RegistrationController extends AbstractController
             );
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('home');
         }
-
+       
         return $this->render('registration/register.html.twig', [
             'pageTitle' => 'Inscription',
             'registrationForm' => $form->createView(),
