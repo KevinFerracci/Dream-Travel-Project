@@ -1,44 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %}
-
-    {{ parent() }}
-
-    
-{% endblock %}
+{% block title %}{{ parent()}} Inscription {% endblock %}
 
 {% block container %}
-    <body>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-        <div class="card card-signin my-5">
-          <div class="card-body">
-            <h5 class="card-title text-center">Inscription</h5>
-            <form class="form-signin">
-              
-                   
-        {{ form_start (registrationForm)  }}
+{% for flashError in app.flashes('verify_email_error') %}
+<div class="alert alert-danger" role="alert">{{ flashError }}</div>
+{% endfor %}
 
-              <div class="form-label-group">  
-        {{ form_row(registrationForm.username) }}
-    
+<div class="form-container">
+<h1 class="text-center h1-register">Créer votre compte</h1>
+<a href="{{ path('app_login') }}" class="authentication d-block text-center">Se connecter</a>
 
-        {{ form_row(registrationForm.firstname) }}
-        {{ form_row(registrationForm.name) }}
-        {{ form_row(registrationForm.birthdate) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.password)  }}
-        {{ form_row(registrationForm.agreeTerms) }}
-        </div>
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">S'inscrire</button>
-     
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
+{{ form_start(registrationForm, { 'attr': {'autocomplete': 'off' } }) }}
+    {{ form_row(registrationForm.username) }}
+    {{ form_row(registrationForm.firstname) }}
+    {{ form_row(registrationForm.name) }}
+    {{ form_row(registrationForm.birthdate) }}
+    {{ form_row(registrationForm.email) }}
+    {{ form_row(registrationForm.password) }}
+    {{ form_row(registrationForm.agreeTerms) }}
+
+<button type="submit" class="btn form-submit">S'enregistrer</button>
+</div>
+
+
+{{ form_end(registrationForm) }}
 {% endblock %}
 
+{% block javascripts %}
+    <script src="{{ asset('js/register.js') }}"> </script>
+{% endblock %}

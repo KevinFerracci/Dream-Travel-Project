@@ -5,9 +5,6 @@
         <link rel="icon" href="{{ asset('pictures/favicon.ico') }}" />
         <title>{% block title %} Dream Travel - Yo {% endblock %}</title>
        
-
-
-     
         {% block stylesheets %}
 
             <!-- Font -->
@@ -76,7 +73,78 @@
      
   </body>
 
-     {% block javascripts %}
-             <script src="{{ asset('../js/nav.js') }}"></script>
+        {% block javascripts %}
+             <!-- Javascript for Bootstrap -->
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        
+
+            <!-- Script for l'overlay navigation --> 
+            <script>
+            function openNav() {
+                document.getElementById("myNav").style.width = "100%";
+            }
+
+            function closeNav() {
+                document.getElementById("myNav").style.width = "0%";
+            }
+            </script>
+
+            <!-- Script for collapsed menu --> 
+            <script>
+            if(document.querySelector('.overlay-content').dataset.userlogged == "true")
+            {
+                            let profileButton = document.getElementById("profileButton");
+            profileButton.setAttribute('class', 'undeployed')
+            
+            profileButton.addEventListener('click', displayElements);
+            
+            let allDisabledMenus = document.querySelectorAll(".disabled-menu");
+            allDisabledMenus.forEach(
+                function(disabledMenu)
+                {
+                    disabledMenu.style.display = "none";
+                }
+            )
+
+            function displayElements()
+            {
+                let rightChevron = document.querySelector('.fa-chevron-right');
+                
+                if(profileButton.matches('.undeployed'))
+                {
+                    rightChevron.style.display = "none";
+                    allDisabledMenus.forEach(
+                    function(disabledMenu)
+                    {
+                        disabledMenu.style.display = "inline-block";
+                        profileButton.classList.remove('undeployed');
+                        profileButton.classList.add('deployed');
+
+                    })
+                }
+                else
+                {
+                    profileButton.classList.remove('deployed');
+                    profileButton.classList.add('undeployed');
+
+                    let downChevron = document.querySelector('.fa-chevron-down');
+
+                    downChevron.style.display = "none";
+                    rightChevron.style.display = "inline-block";
+
+                    allDisabledMenus.forEach(
+                    function(disabledMenu)
+                    {
+                        disabledMenu.style.display = "none";
+
+                    })
+
+                }
+
+            }
+            }
+            </script>
         {% endblock %}
 </html>

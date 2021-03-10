@@ -124,6 +124,7 @@ class User implements UserInterface
         $this->likes = new ArrayCollection();
         $this->cityList = new ArrayCollection();
         $this->language = new ArrayCollection();
+        $this->createdAt = new \DateTime();
     }
 
     public function getId(): ?int
