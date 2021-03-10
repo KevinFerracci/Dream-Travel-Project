@@ -1,0 +1,337 @@
+/*  STYLE FOR HEADER */
+header {
+  height: 50px;
+}
+
+.badge {
+  font-size: 2.5em;
+  padding: 0.6em;
+  font-weight: 400;
+}
+
+/*  STYLE FOR USER SETTINGS */
+
+.container-fluid {
+  background-color: hsl(214, 15%, 91%, 0.8);
+  height: 100%;
+  min-width: 100%;
+  padding-bottom: 0;
+}
+
+h1 {
+  font-family: 'Yeseva One', cursive;
+  font-size: 1.4em;
+  text-align: center;
+  color: #263959;
+  margin: 20px;
+}
+
+p {
+  margin: 0;
+}
+
+.user-header {
+  width: 80%;
+  display: relative;
+  margin: auto;
+}
+
+.img-thumbnail {
+  padding: 0;
+  border: none;
+  flex: 1;
+  border-radius: 50%;
+  max-width: 7em;
+  height: 7em;
+
+  -webkit-box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.75);
+
+}
+
+.user-informations {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  left: 175px;
+  max-width: 100%;
+  top: 145px;
+}
+
+.badge {
+  width: 20px;
+  height: 20px;
+}
+
+.anciennete {
+  margin: 10px;
+  padding-left: 13%;
+}
+
+.form-user-settings {
+  position: relative;
+  top: -57px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  height: 80%;
+  justify-content: space-between;
+}
+
+.user-form {
+  height: 80%;
+}
+
+.user-delete {
+  height: 20%;
+}
+
+.form-group {
+  height: 20%;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.form-group-login {
+  position: relative;
+  top: -100px;
+}
+
+.form-group input {
+  font-size: 15px;
+  width: 100%;
+  border-radius: 2px;
+  margin: 0;
+  padding-left: 10px;
+  color: #A5A4A4;
+
+}
+
+
+.form-group input:focus {
+  -webkit-box-shadow: 0px 0px 3px 0px rgba(87, 130, 78, 1);
+  -moz-box-shadow: 0px 0px 3px 0px rgba(87, 130, 78, 1);
+  box-shadow: 0px 0px 3px 0px rgba(87, 130, 78, 1);
+}
+
+.form-group label,
+.col-form-label {
+  position: relative;
+  padding-bottom: 0;
+  font-size: 13px;
+  margin-bottom: 0px;
+  color: #56967D;
+}
+
+.col-form-label {
+  margin-bottom: 10px;
+}
+
+.form-control:focus {
+  border-color: transparent;
+}
+
+.custom-file {
+  z-index: 0 !important;
+}
+
+.form-group input.custom-file-input {
+  -webkit-box-shadow: 0px 0px 3px 0px rgba(87, 130, 78, 1);
+  -moz-box-shadow: 0px 0px 3px 0px rgba(87, 130, 78, 1);
+  box-shadow: 0px 0px 3px 0px rgba(87, 130, 78, 1);
+  border-color: transparent;
+}
+
+.form-group label.custom-file-label {
+  position: unset;
+  width: 100%;
+  position: absolute;
+  color: #A5A4A4;
+  font-size: 15px;
+
+}
+
+.form-group label.custom-file-label::after {
+  color: white;
+  background-color: #56967D;
+}
+
+
+.form-check input {
+  width: 6%;
+  height: 72%;
+  background-color: white;
+}
+
+.form-check input[type="checkbox"] {
+  box-shadow: none;
+}
+
+
+.form-check span.d-block {
+  margin-top: 10px;
+}
+
+
+.form-check label {
+  position: relative;
+  top: -5px;
+  left: 22px;
+  color: black;
+  font-size: 15px;
+}
+
+.form-control {
+  color: #A5A4A4;
+  font-size: 15px;
+}
+
+
+.form-submit,
+.form-unsubscribe {
+  font-size: 1em;
+  color: white;
+  border-radius: 2px;
+  padding: 0.5em;
+  width: 130px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.form-submit {
+  position: absolute;
+  left: 194px;
+  background-color: #56967D;
+
+}
+
+.form-unsubscribe {
+  position: relative;
+  left: 35px;
+  background-color: tomato;
+}
+
+
+/*  END STYLE FOR SETTINGS */
+
+/*  STYLE FOOTER */
+footer {
+  background-color: hsl(214, 15%, 91%, 0.8);
+  width: 100%;
+  height: 50px;
+
+}
+
+footer .nav {
+  display: flex;
+  justify-content: space-around;
+}
+
+footer,
+footer a {
+  font-size: .9em;
+  color: #55967e;
+}
+
+footer a:active,
+footer a:focus {
+  font-weight: bold;
+  color: #3d6b58;
+}
+
+/*  END STYLE FOOTER */
+
+p.city-name:hover {
+  text-decoration: none;
+  color: #03383B;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .user-informations {
+    left: 215px;
+  }
+
+  #user_language label {
+    margin-left: 15px;
+    margin-top: 5px;
+  }
+
+}
+
+@media (min-width: 1024px) and (orientation:portrait) {
+  body {
+    height: 100vh;
+  }
+
+  .container-fluid {
+    padding-top: 200px;
+  }
+
+  .user-informations {
+    top: 25%;
+    padding-left: 35px;
+  }
+
+  .user-delete {
+    padding-left: 40px;
+  }
+
+  .form-submit {
+    transform: translate(121%, 68%);
+  }
+
+  .form-unsubscribe {
+    margin: auto;
+    transform: translate(345%, 102%);
+  }
+
+}
+
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+
+  .user-informations {
+    left: 33%; 
+    top: 24%;
+  }
+
+  main {
+    width: 60%;
+    margin: auto;
+  }
+
+  .img-thumbnail {
+    top: 17%;
+    left: 10%;
+  }
+
+  .user-form {
+    position: relative; 
+
+  }
+
+  footer {
+    font-size: 1.2em;
+  }
+
+  .form-unsubscribe {
+    position: absolute; 
+    left: 40%;
+    bottom: 5%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+  }
+
+  .form-submit{
+    position: absolute; 
+    right: 35%;
+    bottom: 5%;
+    transform: translate(150%, -50%);
+    margin: auto;
+  }
+
+
+}

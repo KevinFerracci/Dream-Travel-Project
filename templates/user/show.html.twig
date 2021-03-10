@@ -20,8 +20,7 @@
 <!-- Stylesheet EMOJI CSS -->
 <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
 
- <link rel="stylesheet" href="{{ asset('css/style-nav-header.css') }}" crossorigin=""/>
- <link rel="stylesheet" href="{{ asset('css/style-city-show.css') }}" crossorigin="" />
+ <link rel="stylesheet" href="{{ asset('css/style-city-view.css') }}" crossorigin="" />
  <link rel="stylesheet" href="{{ asset('css/style-user-show.css') }}" crossorigin="" />
 {% endblock %}
 
@@ -111,8 +110,9 @@
       <p class="mb-0"><strong>Langues parlées</strong></p>
       <div class="tags-container">
         <ul class="tags-list-language p-0">
+
           {% for language in user.language %}
-          <li><span class="badge badge-pill badge-secondary badge-tag">{{ language }}</span></li>
+          <li><span class="badge badge-pill badge-secondary badge-tag">{{ language.label }}</span></li>
           {% else %}
           <li><span class="badge badge-pill badge-secondary badge-tag">Français</span></li>
           {% endfor %}

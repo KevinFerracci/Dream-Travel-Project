@@ -4,7 +4,7 @@
 
     {{ parent() }}
 
-    <link rel="stylesheet" href="{{ asset('css/style-register.css') }}" crossorigin="" />
+    
 {% endblock %}
 
 {% block container %}
@@ -14,7 +14,7 @@
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card card-signin my-5">
           <div class="card-body">
-            <h5 class="card-title text-center">S'inscrire</h5>
+            <h5 class="card-title text-center">Inscription</h5>
             <form class="form-signin">
               
                    
@@ -31,7 +31,7 @@
         {{ form_row(registrationForm.password)  }}
         {{ form_row(registrationForm.agreeTerms) }}
         </div>
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">S'inscrire</button>
      
             </form>
           </div>

@@ -1,13 +1,65 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit User{% endblock %}
+{% block title %}{{ parent() }} Préférences{% endblock %}
+{% block stylesheets %}
 
-{% block body %}
-    <h1>Edit User</h1>
+{{ parent() }}
 
-    {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
+<!-- Internal Stylesheet -->
+<link rel="stylesheet" href="{{ asset('css/style-user-edit.css') }}" crossorigin="" />
 
-    <a href="{{ path('user_index') }}">back to list</a>
+{% endblock %}
+{% block container %}
+    <div id="form-user-settings" class="">
 
-    {{ include('user/_delete_form.html.twig') }}
+        <h1>Coucou {{ user.firstname|capitalize }} !</h1>
+
+        <div class="user-header">
+           <img src="{{ asset('pictures/avatars/' ~ user.avatar) }}" alt="Avatar de {{user.username}}" class="img-thumbnail" /> 
+            <div class="user-informations">
+                <p><strong>Titre: </strong>
+                    {% if user.roles[0] == "ROLE ADMIN" %}
+                        Administrateur
+                    {% else %}
+                        Utilisateur
+                    {% endif %}</p>
+
+
+                <p><strong>Badge:  </strong>
+                    {% set badgeLevel = [] %}
+                    {% for key, badge in user.badge %}
+                        {% set badgeLevel = badgeLevel|merge([badge.badgeString]) %}
+                    {% endfor %}
+                    {% for badge in user.badge %}
+                        {% if badge.badgeString == max(badgeLevel) %}
+                            {{ badge.label }} 
+                        {% endif %}
+                    {% endfor %}
+                
+                </p>
+                <p><strong>{{ user.points }} </strong>point{% if user.points > 1 %}s{% endif %}</p>
+            </div>
+
+            {% set difference = date(user.createdAt|date("Y/m/d")).diff(date('now'|date('Y/m/d'))) %}
+            {% set days = difference.days/365 %}
+            <p class="anciennete"><strong>Ancienneté : </strong>{{ days|round(0, 'floor') }} mois</p>
+            
+        </div>
+
+
+
+        {{ include('user/_form.html.twig', {'button_label': 'Valider'}) }}
+        <form method="post" action="{{ path('user_delete', {'id': user.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+    <button class="btn form-unsubscribe">Désinscription</button>
+</form>
+        
+       
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+
 {% endblock %}
