@@ -36,6 +36,8 @@
                             <li><a href = "#">  <img  class="logo" src="{{ asset('pictures/logo/logo.png') }}" alt="logo">
                             <li><a href = "#"> Groupe de voyage</a></li>
                             {% if app.user %}
+                            <li><a href = "{{ path('user_show', { 'id' : app.user.id })}}"> Mon profil </a></li>
+                            <li><a href = "{{ path('user_edit', { 'id' : app.user.id })}}"> Paramètres </a></li>
                             <li><a href = "{{ path('app_logout')}}"> Deconnexion</a></li>
                             {% else %}
                             <li><a href = "{{ path('app_login')}}"> Se connecter</a></li>

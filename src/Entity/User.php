@@ -112,12 +112,18 @@ class User implements UserInterface
      */
     private $cityList;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Language::class, inversedBy="users")
+     */
+    private $language;
+
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
         $this->badge = new ArrayCollection();
         $this->likes = new ArrayCollection();
         $this->cityList = new ArrayCollection();
+        $this->language = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -452,6 +458,30 @@ class User implements UserInterface
         if ($this->cityList->removeElement($cityList)) {
             $cityList->removeUser($this);
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Language[]
+     */
+    public function getLanguage(): Collection
+    {
+        return $this->language;
+    }
+
+    public function addLanguage(Language $language): self
+    {
+        if (!$this->language->contains($language)) {
+            $this->language[] = $language;
+        }
+
+        return $this;
+    }
+
+    public function removeLanguage(Language $language): self
+    {
+        $this->language->removeElement($language);
 
         return $this;
     }
