@@ -96,10 +96,10 @@ class CityController extends AbstractController
             $jsonStringImage = file_get_contents('https://api.teleport.org/api/urban_areas/slug:'. $cityName . '/images/');
             $objectResponseImage = json_decode($jsonStringImage);
 
-            $jsonUnsplashStringImage = file_get_contents('https://api.unsplash.com/photos/random?query='. $cityName . '&client_id=BCXFUSjrXKrqgpLKLj6gN36cBB5qZ91T3lzsnrWQthI');
+            $jsonUnsplashStringImage = file_get_contents('https://api.unsplash.com/photos/random?query='. $cityName . '&client_id=' . $_ENV['API_KEY_UNSPLASH']);
             $objectUnsplashImageResponse = json_decode($jsonUnsplashStringImage);
 
-            $jsonTitleImage = file_get_contents('https://api.unsplash.com/search/photos/?query='. $cityName . '&client_id=BCXFUSjrXKrqgpLKLj6gN36cBB5qZ91T3lzsnrWQthI');
+            $jsonTitleImage = file_get_contents('https://api.unsplash.com/search/photos/?query='. $cityName . '&client_id=' . $_ENV['API_KEY_UNSPLASH']);
             $objectResponseTitleImage = json_decode($jsonTitleImage);
             $titleImage = $objectResponseTitleImage->results[0]->urls; 
             

@@ -24,7 +24,7 @@ class QueryApi
             //'https://api.unsplash.com/search/photos/?query=' . $cityNameUnsplash . '&client_id=' . $_ENV['API_KEY_UNSPLASH'];
             //landscape
             //$urlImageQuery = 'https://api.unsplash.com/search/photos/?orientation=landscape&query=' . $cityNameUnsplash . '&client_id=' . $_ENV['API_KEY_UNSPLASH'];
-            $urlImageQuery = 'https://api.unsplash.com/search/photos/?query=' . $cityNameUnsplash . '&client_id=BCXFUSjrXKrqgpLKLj6gN36cBB5qZ91T3lzsnrWQthI';
+            $urlImageQuery = 'https://api.unsplash.com/search/photos/?query=' . $cityNameUnsplash . '&client_id=' . $_ENV['API_KEY_UNSPLASH'];
             $jsonStringUrlImage = file_get_contents($urlImageQuery);
             $objectResponseUrlImage = json_decode($jsonStringUrlImage);
             $urlImage = $objectResponseUrlImage->results[0]->urls;

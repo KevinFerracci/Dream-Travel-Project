@@ -8,7 +8,7 @@ class Translate
 {
     public function translateToFrench($text)
     {
-        $url = 'https://www.googleapis.com/language/translate/v2?key=AIzaSyD_6nS65YbRMP7w3EtARAfjho8DfiYBReA&q=' . rawurlencode($text) . '&source=en&target=fr';
+        $url = 'https://www.googleapis.com/language/translate/v2?key=' . $_ENV['API_KEY_TRANSLATE'] . '&q=' . rawurlencode($text) . '&source=en&target=fr';
         $handle = curl_init($url);
         curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($handle);
