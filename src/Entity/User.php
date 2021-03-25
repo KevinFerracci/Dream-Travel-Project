@@ -102,10 +102,15 @@ class User implements UserInterface
      */
     private $badge;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Like::class, mappedBy="user")
+     /**
+     * @ORM\OneToMany(targetEntity=ReviewLike::class, mappedBy="user")
      */
     private $likes;
+
+    /**
+     * @ORM\OneToMany(targetEntity=CityLike::class, mappedBy="user")
+     */
+    private $cityLikes;
 
     /**
      * @ORM\ManyToMany(targetEntity=CityList::class, mappedBy="users")
@@ -117,14 +122,29 @@ class User implements UserInterface
      */
     private $language;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="users")
+     */
+    private $favoriteUser;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="favoriteUser")
+     */
+    private $users;
+
     public function __construct()
     {
+        $this->language = new ArrayCollection();
         $this->reviews = new ArrayCollection();
         $this->badge = new ArrayCollection();
         $this->likes = new ArrayCollection();
         $this->cityList = new ArrayCollection();
         $this->language = new ArrayCollection();
         $this->createdAt = new \DateTime();
+        $this->favoriteUser = new ArrayCollection();
+        $this->users = new ArrayCollection();
+        $this->likes = new ArrayCollection();
+        $this->cityLikes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -406,36 +426,7 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @return Collection|Like[]
-     */
-    public function getLikes(): Collection
-    {
-        return $this->likes;
-    }
-
-    public function addLike(Like $like): self
-    {
-        if (!$this->likes->contains($like)) {
-            $this->likes[] = $like;
-            $like->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeLike(Like $like): self
-    {
-        if ($this->likes->removeElement($like)) {
-            // set the owning side to null (unless already changed)
-            if ($like->getUser() === $this) {
-                $like->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
+    
     /**
      * @return Collection|CityList[]
      */
@@ -483,6 +474,130 @@ class User implements UserInterface
     public function removeLanguage(Language $language): self
     {
         $this->language->removeElement($language);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|self[]
+     */
+    public function getFavoriteUser(): Collection
+    {
+        return $this->favoriteUser;
+    }
+
+    public function addFavoriteUser(self $favoriteUser): self
+    {
+        if (!$this->favoriteUser->contains($favoriteUser)) {
+            $this->favoriteUser[] = $favoriteUser;
+        }
+
+        return $this;
+    }
+
+    public function removeFavoriteUser(self $favoriteUser): self
+    {
+        $this->favoriteUser->removeElement($favoriteUser);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|self[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(self $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->addFavoriteUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(self $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            $user->removeFavoriteUser($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ReviewLike[]
+     */
+    public function getLikes(): Collection
+    {
+        return $this->likes;
+    }
+
+    public function addLike(ReviewLike $like): self
+    {
+        if (!$this->likes->contains($like)) {
+            $this->likes[] = $like;
+            $like->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLike(ReviewLike $like): self
+    {
+        if ($this->likes->contains($like)) {
+            $this->likes->removeElement($like);
+            // set the owning side to null (unless already changed)
+            if ($like->getUser() === $this) {
+                $like->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+          
+
+    public function isFavoriteUser(User $userTarget) :bool
+    {
+        foreach ($this->users as $userLike) {
+            if ($userLike->getFavoriteUser() === $userTarget) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * @return Collection|CityLike[]
+     */
+    public function getCityLikes(): Collection
+    {
+        return $this->cityLikes;
+    }
+
+    public function addCityLike(CityLike $cityLike): self
+    {
+        if (!$this->cityLikes->contains($cityLike)) {
+            $this->cityLikes[] = $cityLike;
+            $cityLike->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCityLike(CityLike $cityLike): self
+    {
+        if ($this->cityLikes->contains($cityLike)) {
+            $this->cityLikes->removeElement($cityLike);
+            // set the owning side to null (unless already changed)
+            if ($cityLike->getUser() === $this) {
+                $cityLike->setUser(null);
+            }
+        }
 
         return $this;
     }

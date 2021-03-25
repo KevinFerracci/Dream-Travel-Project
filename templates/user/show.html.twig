@@ -54,11 +54,11 @@
     {% endfor %}
 
     {% endif %}
-    {#
+   
     <div id="circleLike">
       <i class="{{ classeLike }} " style="font-size:100px;" aria-role="presentation"></i>
     </div>
-
+{#
     {% for row in user.users %}
     Utilisateurs qui ont aimé ce profil
     {{dump(row.name)}}
@@ -102,7 +102,7 @@
 
     <h1 id="h1-user">{{user.username}}</h1>
     <div class="user-basic-datas">
-      <p class="inscription-date"><em>Inscrit depuis {{user.createdAt.date|date("d/m/Y")}}</em></p>
+      <p class="inscription-date"><em>Inscrit(e) depuis le {{user.createdAt.date|date("d/m/Y")}}</em></p>
 
       {% set difference = date(user.birthdate|date("Y/m/d")).diff(date('now'|date('Y/m/d'))) %}
       {% set days = difference.days/365 %}

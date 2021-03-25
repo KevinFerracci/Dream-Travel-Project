@@ -5,8 +5,8 @@
           Mes likes
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="">Villes</a>
-          <a class="dropdown-item" href="">Utilisateurs</a>
+          <a class="dropdown-item" href="{{ path ('user_users_like', { 'id' : app.user.id })}}">Villes</a>
+          <a class="dropdown-item" href="{{ path ('user_cities_like', { 'id' : app.user.id })}}">Utilisateurs</a>
         </div>
       </li>
       <li class="nav-item">

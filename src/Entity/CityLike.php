@@ -2,29 +2,28 @@
 
 namespace App\Entity;
 
-use App\Repository\LikeRepository;
+use App\Repository\CityLikeRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=LikeRepository::class)
- * @ORM\Table(name="`like`")
+ * @ORM\Entity(repositoryClass=CityLikeRepository::class)
  */
-class Like
+class CityLike
 {
     /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Review::class, inversedBy="likes")
+     * @ORM\ManyToOne(targetEntity=City::class, inversedBy="cityLikes")
      */
-    private $review;
+    private $city;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="likes")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="cityLikes")
      */
     private $user;
 
@@ -33,14 +32,14 @@ class Like
         return $this->id;
     }
 
-    public function getReview(): ?Review
+    public function getCity(): ?City
     {
-        return $this->review;
+        return $this->city;
     }
 
-    public function setReview(?Review $review): self
+    public function setCity(?City $city): self
     {
-        $this->review = $review;
+        $this->city = $city;
 
         return $this;
     }

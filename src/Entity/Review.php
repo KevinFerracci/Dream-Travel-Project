@@ -80,7 +80,7 @@ class Review
     private $picture;
 
     /**
-     * @ORM\OneToMany(targetEntity=Like::class, mappedBy="review")
+     * @ORM\OneToMany(targetEntity=ReviewLike::class, mappedBy="review")
      */
     private $likes;
 

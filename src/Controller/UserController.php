@@ -110,4 +110,25 @@ class UserController extends AbstractController
 
         return $this->redirectToRoute('user_index');
     }
+
+    /**
+     * @Route("/{id}/users-like", name="user_users_like", methods={"GET"})
+     */
+    public function favoritesUsers(User $user)
+    {
+        return $this->render('user/users_like.html.twig', [
+            'user' => $user,
+        ]);
+    }
+
+
+      /**
+     * @Route("/{id}/cities-like", name="user_cities_like", methods={"GET"})
+     */
+    public function favoritesCities(User $user)
+    {
+        return $this->render('user/cities_like.html.twig', [
+            'user' => $user,
+        ]);
+    }
 }
