@@ -2,6 +2,8 @@
 
 
 {% block stylesheets %}
+
+{{ parent() }}
 <!-- Stylesheet GOOGLE FONT -->
 <link rel="stylesheet" href="{{ asset('css/style.css') }}" crossorigin=""/>
 <link rel="stylesheet" href="{{ asset('css/style-advanced-search.css') }}" crossorigin="" />
@@ -10,7 +12,7 @@
 {% block container %}
 <main>
 
-{{dump(app.user)}}
+
 </main>
 {% endblock %}
 

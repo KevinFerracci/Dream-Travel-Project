@@ -1,0 +1,45 @@
+
+.h1-login {
+  font-size: 2em;
+}
+
+.login-authentication {
+  font-size: 1em;
+  color: #28a745;
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.form-submit{
+  font-size: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  background-color: #56967D;
+  border-radius: 2px;
+  padding: 0.5em;
+  position: absolute;
+  bottom: -52px;
+  left: 74%;
+  transform: translateX(-50%)
+}
+
+@media (min-width: 768px) { 
+
+  .login-authentication{
+    top: 57px;
+  }
+}
+
+@media (min-width: 992px) { 
+  .login-authentication{
+    top: 13%;
+  }
+
+  a.authentication{
+    top: 10%;
+  }
+
+}

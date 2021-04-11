@@ -37,7 +37,10 @@ a.search-redirection {
   width: 80%;
   /* A modifier par la suite */
   margin-left: 100px;
-  margin-bottom: 100px;
+}
+
+input#search {
+  margin-bottom : 400px;
 }
 
 #search-results {
@@ -45,7 +48,7 @@ a.search-redirection {
   width: 80%;
   left: 50%;
   transform: translateX(-50%);
-  top: 374px;
+  top: 420px;
 }
 
 .search-error-hidden {
