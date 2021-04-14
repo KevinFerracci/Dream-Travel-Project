@@ -2,36 +2,39 @@
 
 {% block stylesheets %}
 
-{{ parent() }}
+	{{ parent() }}
 
-<!-- Internal Stylesheet -->
-<link rel="stylesheet" href="{{ asset('css/style-search.css') }}" crossorigin="" />
+	<!-- Internal Stylesheet -->
+    <link rel="stylesheet" href="{{ asset('css/quick-search.css') }}" crossorigin=""/>
+    
 {% endblock %}
 
 {% block container %}
-<div class="form-container-search">
-    <h1 class="text-center">Recherche simplifiée</h1>
-    <a href="{{ path('advanced_search')}}" class="search-redirection d-block text-center mb-0">Faire une recherche filtrée</a>
-    <p class="text-center">Saisissez le nom d'une ville et cliquez sur son nom afin d'accéder à sa fiche.</p>
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        {{ form_end(form) }}
+	<div class="form-container-search">
+		<h1 class="text-center">Recherche simplifiée</h1>
+		<a href="{{ path('advanced_search')}}" class="search-redirection d-block text-center mb-0">Faire une recherche filtrée</a>
+		<p class="text-center">Saisissez le nom d'une ville et cliquez sur son nom afin d'accéder à sa fiche.</p>
 
-    <div id="search-error" class="search-error-hidden">Cette ville n'existe pas !</div>
-    <div id="search-results"></div>
-</div>
 
-<template id="template__elt">
-    <div class="card">
-        <div class="card-body">
-        
-        </div>
-    </div>
-</template>
+		{{ form_start(form) }}
+		{{ form_widget(form) }}
+		{{ form_end(form) }}
+
+
+		<div id="search-error" class="search-error-hidden">Cette ville n'existe pas !</div>
+		<div id="search-results"></div>
+	</div>
+
+	<template id="template__elt">
+		<div class="card">
+			<div class="card-body"></div>
+		</div>
+	</template>
 {% endblock %}
 
 {% block javascripts %}
 
-    <script src="{{ asset('js/search.js') }}"> </script>
-    
+    {{ parent()}}
+	<script src="{{ asset('js/search.js') }}"></script>
+
 {% endblock %}

@@ -1,246 +1,257 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="icon" href="{{ asset('pictures/favicon.ico') }}" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>{% block title %} Dream Travel - Yo {% endblock %}</title>
-       
-        {% block stylesheets %}
+	<head>
+		<meta charset="UTF-8">
+		<link rel="icon" href="{{ asset('pictures/favicon.ico') }}"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>
+			{% block title %}
+				Dream Travel - Yo
+			{% endblock %}
+		</title>
 
-            <!-- Stylesheet GOOGLE FONT -->
-            <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Yeseva+One&display=swap" rel="stylesheet">
-            
-            <!-- Stylesheet BOOTSTRAP -->
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-            
-            <!-- Stylesheet FORK AWESOME -->
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
-            
-            <!-- Stylesheet EMOJI CSS -->
-            <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
+		{% block stylesheets %}
 
-            <!-- Internals stylesheets" -->
-            <link rel="stylesheet" href="{{ asset('css/base.css') }}"/>
+			<!-- Stylesheet GOOGLE FONT -->
+			<link
+			href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Yeseva+One&display=swap" rel="stylesheet">
 
-            <!-- Scripts JS for Bootstrap -->
-        
-        {% endblock %}
+			<!-- Stylesheet BOOTSTRAP -->
+			<link
+			rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    </head>
+			<!-- Stylesheet FORK AWESOME -->
+			<link
+			rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
 
-    {% block body %}
-    <body>
-        {% block header %}
-       
+			<!-- Stylesheet EMOJI CSS -->
+			<link
+			href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
 
-            <header>
-                <nav class="navbar navbar-expand-lg navbar-light {# bg-light #}">
-                    <a class="navbar-brand" href="{{ path('advanced_search')}}"><img src="{{ asset('pictures/logo/logo.png') }}" class="website-logo" /></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+			<!-- Internals stylesheets" -->
+			<link
+			rel="stylesheet" href="{{ asset('css/base.css') }}"/>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('advanced_search')}}"> Trouvez votre destination</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('search')}}">Recherche rapide</a>
-                            </li>
-                            {% if app.user %}
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Profil
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ path('user_show', { 'id' : app.user.id }) }}">Mon profil</a>
-                                        <a class="dropdown-item" href="{{ path('user_edit' , { id: app.user.id }) }}">Mes paramètres</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Mes villes coup de coeur</a>
-                                        <a class="dropdown-item" href="#">Mes profils suivis</a>
-                                        
-                                        
-                                    </div>
-                                
-                                </li>
-                            {% endif %}
-                        </ul>
+		<!-- Scripts JS for Bootstrap -->
 
-                        {% if app.user %}
-                            <ul class="navbar-nav margin-right">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
-                            </li>
-                        {% else %}
-                            <ul class="navbar-nav margin-right">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Inscription</a>
-                                </li>
-                            </ul>
-                        {% endif %}
-                        
-                   
-                    </div>
-                </nav>
-            </header>
+		{% endblock %}
 
-    {% endblock %}
+	</head>
+	<body>
+		{% block body %}
 
-    {% block container %}{% endblock %}
-
-    {% block footer %}
-
-    <footer>
-        <ul class="footer-links">
-            <li>
-                <a href="#" class="contact footer-link">Contact</a>
-            </li>
-            <li>
-                <a href="#" class="about footer-link">A propos</a>
-            </li>
-            <li>
-                <a href="#" class="legal-mentions footer-link">Mentions Légales</a>
-            </li>
-        </ul>
-    </footer>
-
-    {% endblock %}
-
-    {% endblock %}
-        
-            {# <div class="container-fluid">
-                <header id="small-devices">
+			{% block header %}
 
 
+				<header>
+					<nav class="navbar navbar-expand-lg navbar-light {# bg-light #}">
+						<a class="navbar-brand" href="{{ path('advanced_search')}}"><img src="{{ asset('pictures/logo/logo.png') }}" class="website-logo"/></a>
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
 
-                    <span class="navbar-toggler-icon d-block ml-auto" onclick="openNav()">
-                        &#9776;
-                    </span>
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav mr-auto">
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('advanced_search')}}">
+										Trouvez votre destination</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('search')}}">Recherche rapide</a>
+								</li>
+								{% if app.user %}
+									<li class="nav-item dropdown">
+										<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											Profil
+										</a>
+										<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+											<a class="dropdown-item" href="{{ path('user_show', { 'id' : app.user.id }) }}">Mon profil</a>
+											<a class="dropdown-item" href="{{ path('user_edit' , { id: app.user.id }) }}">Mes paramètres</a>
+											<div class="dropdown-divider"></div>
+											<a class="dropdown-item" href="#">Mes villes coup de coeur</a>
+											<a class="dropdown-item" href="#">Mes profils suivis</a>
 
-                    <div id="myNav" class="overlay">
-                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <div class="overlay-content" data-userLogged="{% if app.user %}true{% else %}false{% endif %}">
-                            <hr class="hr-collapse-menu">
-                            <a href="{{ path('advanced_search')}}">Accueil</a>
-                            <a href="{{ path('advanced_search')}}">Recherche avancée</a>
-                            <a href="{{ path('search')}}">Recherche simple</a>
-                            <hr class="hr-collapse-menu">
-                            <a href="">Random</a>
-                           
-                            <hr class="hr-collapse-menu">
+
+										</div>
+
+									</li>
+								{% endif %}
+							</ul>
+
+							{% if app.user %}
+								<ul class="navbar-nav margin-right">
+									<li class="nav-item">
+										<a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+									</li>
+								{% else %}
+									<ul class="navbar-nav margin-right">
+										<li class="nav-item">
+											<a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
+										</li>
+									</ul>
+								{% endif %}
 
 
-                            {% if app.user %}
-                                <a href="#" id="profileButton">Profil <i class="fa fa-chevron-right" aria-hidden="true"></i><i class="fa fa-chevron-down disabled-menu" aria-hidden="true"></i></a>
-                                <a href="{{ path('user_show', { 'id' : app.user.id }) }}" class="disabled-menu">Mon profil</a>
-                                <a href="{{ path('user_edit' , { id: app.user.id }) }}" class="disabled-menu">Paramètres</a>
+							</div>
+						</nav>
+					</header>
 
-                                {% set role = "ROLE_ADMIN" %}
-                                {% if role in app.user.getRoles() %}
-                                    <a href="{{ url( 'easyadmin' )}}" class="disabled-menu">Administration</a>
-                                {% endif %}
+				{% endblock %}
 
-                            <hr class="hr-collapse-menu">
-                            {% endif %}
-                             {% if app.user %}
-                                <a href="{{ path('app_logout') }}" class="text-alert-success">Déconnexion</a>   
-                             {% else %}
-                                <a href="{{ path('app_login') }}" class="text-alert-success">Connexion</a>
-                            {% endif %}
-                        </div>
-                    </div>
-                </header>
+				{% block container %}{% endblock %}
 
-                <header id="desktop">
-                    <ul class="nav-desktop">
-                        <div class="nav-desktop-left">
-                            <li class="nav-item">
-                                <a href="{{ path('advanced_search')}}">Accueil</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ path('advanced_search')}}">Recherche avancée</a>
-                            </li>
-                            <li class="nav-item">
-                              <a href="{{ path('search')}}">Recherche simple</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="">Random</a>
-                            </li>
-                        </div>
+				{% block footer %}
 
-                        <a href="{{ path('advanced_search') }}"><img src="{{ asset('pictures/logo/logo.png') }}" class="website-logo" /></a>
+					<footer>
+						<ul class="footer-links">
+							<li>
+								<a href="#" class="contact footer-link">Contact</a>
+							</li>
+							<li>
+								<a href="#" class="about footer-link">A propos</a>
+							</li>
+							<li>
+								<a href="#" class="legal-mentions footer-link">Mentions Légales</a>
+							</li>
+						</ul>
+					</footer>
 
-                        <div class="nav-desktop-right">
-                        {% if app.user %}
-                            <li class="nav-item">
-                                <a href="{{ path('user_show', { 'id' : app.user.id }) }}">Mon profil</a>
-                            </li>
-                            <li class="nav-item">    
-                                <a href="{{ path('user_edit' , { id: app.user.id }) }}">Paramètres</a>
-                            </li>
+				{% endblock %}
 
-                            {% set role = "ROLE_ADMIN" %}
-                            
-                            {% if role in app.user.getRoles() %}
-                                <li class="nav-item">
-                                    <a href="{{ url( 'easyadmin' )}}">Administration</a>
-                                </li>
-                            {% endif %}
+			{% endblock %}
 
-                             {% endif %}
-                             {% if app.user %}
-                            <li class="nav-item"> 
-                                <a href="{{ path('app_logout') }}" class="text-danger">Déconnexion</a>  
-                            </li> 
-                             {% else %}
-                             <li class="nav-item">
-                                <a href="{{ path('app_login') }}" class="text-success">Connexion</a>
-                            </li>
-                        {% endif %}
-                         </div>
-                        </ul>
-                    
-                </header>
-                
+			{# <div class="container-fluid">
+			                <header id="small-devices">
+			
+			
+			
+			                    <span class="navbar-toggler-icon d-block ml-auto" onclick="openNav()">
+			                        &#9776;
+			                    </span>
+			
+			                    <div id="myNav" class="overlay">
+			                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			                        <div class="overlay-content" data-userLogged="{% if app.user %}true{% else %}false{% endif %}">
+			                            <hr class="hr-collapse-menu">
+			                            <a href="{{ path('advanced_search')}}">Accueil</a>
+			                            <a href="{{ path('advanced_search')}}">Recherche avancée</a>
+			                            <a href="{{ path('search')}}">Recherche simple</a>
+			                            <hr class="hr-collapse-menu">
+			                            <a href="">Random</a>
+			                           
+			                            <hr class="hr-collapse-menu">
+			
+			
+			                            {% if app.user %}
+			                                <a href="#" id="profileButton">Profil <i class="fa fa-chevron-right" aria-hidden="true"></i><i class="fa fa-chevron-down disabled-menu" aria-hidden="true"></i></a>
+			                                <a href="{{ path('user_show', { 'id' : app.user.id }) }}" class="disabled-menu">Mon profil</a>
+			                                <a href="{{ path('user_edit' , { id: app.user.id }) }}" class="disabled-menu">Paramètres</a>
+			
+			                                {% set role = "ROLE_ADMIN" %}
+			                                {% if role in app.user.getRoles() %}
+			                                    <a href="{{ url( 'easyadmin' )}}" class="disabled-menu">Administration</a>
+			                                {% endif %}
+			
+			                            <hr class="hr-collapse-menu">
+			                            {% endif %}
+			                             {% if app.user %}
+			                                <a href="{{ path('app_logout') }}" class="text-alert-success">Déconnexion</a>   
+			                             {% else %}
+			                                <a href="{{ path('app_login') }}" class="text-alert-success">Connexion</a>
+			                            {% endif %}
+			                        </div>
+			                    </div>
+			                </header>
+			
+			                <header id="desktop">
+			                    <ul class="nav-desktop">
+			                        <div class="nav-desktop-left">
+			                            <li class="nav-item">
+			                                <a href="{{ path('advanced_search')}}">Accueil</a>
+			                            </li>
+			                            <li class="nav-item">
+			                                <a href="{{ path('advanced_search')}}">Recherche avancée</a>
+			                            </li>
+			                            <li class="nav-item">
+			                              <a href="{{ path('search')}}">Recherche simple</a>
+			                            </li>
+			                            <li class="nav-item">
+			                                <a href="">Random</a>
+			                            </li>
+			                        </div>
+			
+			                        <a href="{{ path('advanced_search') }}"><img src="{{ asset('pictures/logo/logo.png') }}" class="website-logo" /></a>
+			
+			                        <div class="nav-desktop-right">
+			                        {% if app.user %}
+			                            <li class="nav-item">
+			                                <a href="{{ path('user_show', { 'id' : app.user.id }) }}">Mon profil</a>
+			                            </li>
+			                            <li class="nav-item">    
+			                                <a href="{{ path('user_edit' , { id: app.user.id }) }}">Paramètres</a>
+			                            </li>
+			
+			                            {% set role = "ROLE_ADMIN" %}
+			                            
+			                            {% if role in app.user.getRoles() %}
+			                                <li class="nav-item">
+			                                    <a href="{{ url( 'easyadmin' )}}">Administration</a>
+			                                </li>
+			                            {% endif %}
+			
+			                             {% endif %}
+			                             {% if app.user %}
+			                            <li class="nav-item"> 
+			                                <a href="{{ path('app_logout') }}" class="text-danger">Déconnexion</a>  
+			                            </li> 
+			                             {% else %}
+			                             <li class="nav-item">
+			                                <a href="{{ path('app_login') }}" class="text-success">Connexion</a>
+			                            </li>
+			                        {% endif %}
+			                         </div>
+			                        </ul>
+			                    
+			                </header>
+			                
+			
+			                <main>
+			            {% endblock %}
+			            {% block container %}{% endblock %}
+			            {% block footer %}
+			                </main>
+			            </div>
+			            <footer class="mt-auto">
+			            <ul class="nav m-0">
+			                <li class="nav-item">
+			                <a class="nav-link active" href="">À propos</a> 
+			                </li>
+			                <li class="nav-item">
+			                <a class="nav-link" href="">‎Mentions Légales</a>
+			                </li>
+			                <li class="nav-item">
+			                <a class="nav-link" href="">Contact</a>
+			                </li>
+			            </ul>
+			            </footer>
+			            {% endblock %}
+			        {% endblock %}
+			        {% block javascripts %}
+			
+			           <!-- Internal Javascript -->
+			        <script src="{{ asset('js/base.js') }}"> </script>
+			
+			        {% endblock %}
+			   #}
 
-                <main>
-            {% endblock %}
-            {% block container %}{% endblock %}
-            {% block footer %}
-                </main>
-            </div>
-            <footer class="mt-auto">
-            <ul class="nav m-0">
-                <li class="nav-item">
-                <a class="nav-link active" href="">À propos</a> 
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="">‎Mentions Légales</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="">Contact</a>
-                </li>
-            </ul>
-            </footer>
-            {% endblock %}
-        {% endblock %}
-        {% block javascripts %}
-
-           <!-- Internal Javascript -->
-        <script src="{{ asset('js/base.js') }}"> </script>
-
-        {% endblock %}
-   #} 
-   
-    {% block javascripts %}
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
-    {% endblock %}
-   </body>
+			{% block javascripts %}
+				<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+			{% endblock %}
+		</body>
+	</body>
 </html>
