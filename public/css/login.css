@@ -1,0 +1,66 @@
+body {
+    color: #3243c4;
+    background-image: url("../pictures/advanced-search-background/santorini.jpg");
+}
+
+h1{
+    margin: 1rem, 0, 1.5rem, 0;
+}
+
+.form-container{
+    width: 30rem;
+    background-color: white;
+    padding: 3rem;
+    border: 2px solid #4885db;
+    border-radius: 5%;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 4rem;
+    text-align: center;
+    box-shadow: 5px 5px 1px 1px rgba(153, 107, 107, 0.2);
+}
+
+.form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+
+.form-submit-login{
+  justify-content: center;
+}
+
+.form-control{
+  margin: 0.5rem 0 0.5rem 0;
+  border: 3px solid #507DBC;
+}
+
+.form-input{
+    margin-top: 1rem;
+}
+
+.form-submit-login{
+    margin-top: 1rem;
+    background-color: #4885db;
+    color:white;
+}
+
+.form-submit-login:hover{
+    background-color: #62d4fd;
+    color:white;
+}
+
+a{
+    color: rgb(37, 192, 185);
+}
+
+a:hover{
+    color: rgb(255, 174, 0);
+    text-decoration: none;
+}
+
+footer {
+  position : absolute;
+  bottom : 0;
+}

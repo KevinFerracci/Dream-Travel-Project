@@ -2,7 +2,8 @@
 
 {% block stylesheets %}
 {{ parent() }}
-<link rel="stylesheet" href="{{ asset('css/style-login.css') }}" crossorigin="" />
+<link rel="stylesheet" href="{{ asset('css/login.css') }}" crossorigin="" />
+
 {% endblock %}
 
 {% block container %}
@@ -10,7 +11,7 @@
 
     {% if app.user %}
     <div class="mb-3">
-        You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+        Vous êtes déjà connecté(e) en tant que {{ app.user.username }}. <a href="{{ path('app_logout') }}">Deconnexion</a>
     </div>
     {% endif %}
 
@@ -34,19 +35,20 @@
     <form method="post" id="formLogin">
 
    
-            
-        <div class="form-group-login">
-            <label for="inputEmail" id="labelEmail">Email</label>
-            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control">
-            <label for="inputPassword" id="labelPassword">Mot de passe</label>
-            <input type="password" name="password" id="inputPassword" class="form-control">
-            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        <div class="form">    
+            <div class="form-group-login">
+                <label for="inputEmail" id="labelEmail" class="form-input">Email</label>
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control">
+                <label for="inputPassword" id="labelPassword" class="form-input">Mot de passe</label>
+                <input type="password" name="password" id="inputPassword" class="form-control">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                <button class="btn form-submit-login" type="submit">
+                    S'identifier
+                </button>
+            </div>
         </div>
-
-        <button class="btn form-submit-login" type="submit">
-            S'identifier
-        </button>
-        </form>
+        
+    </form>
 </div>
     
 {% endblock %}

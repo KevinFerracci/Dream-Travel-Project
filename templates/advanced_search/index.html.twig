@@ -3,8 +3,10 @@
 {% block stylesheets %}
 
 <!-- Internal Stylesheet -->
-<link rel="stylesheet" href="{{ asset('css/style-advanced-search.css') }}" crossorigin="" />
-<link rel="stylesheet" href="{{ asset('css/style-nav-header.css') }}" crossorigin=""/>
+{# <link rel="stylesheet" href="{{ asset('css/style-advanced-search.css') }}" crossorigin="" />
+<link rel="stylesheet" href="{{ asset('css/style-nav-header.css') }}" crossorigin=""/> #}
+{{ parent() }}
+<link rel="stylesheet" href="{{ asset('css/home.css') }}" crossorigin="" />
 
 {% endblock %}
 
@@ -124,6 +126,8 @@
 {% endblock %}
 
 {% block javascripts %}
+
+    {{ parent() }}
 
   <script src="{{ asset('js/advanced-search.js') }}"> </script>
 

@@ -8,32 +8,116 @@
        
         {% block stylesheets %}
 
-             <!-- Stylesheet GOOGLE FONT -->
-        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Yeseva+One&display=swap" rel="stylesheet">
-        
-        <!-- Stylesheet BOOTSTRAP -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        
-        <!-- Stylesheet FORK AWESOME -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
-        
-        <!-- Stylesheet EMOJI CSS -->
-        <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
+            <!-- Stylesheet GOOGLE FONT -->
+            <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Yeseva+One&display=swap" rel="stylesheet">
+            
+            <!-- Stylesheet BOOTSTRAP -->
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+            
+            <!-- Stylesheet FORK AWESOME -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
+            
+            <!-- Stylesheet EMOJI CSS -->
+            <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
 
-         <!-- Internals stylesheets" -->
-            <link rel="stylesheet" href="{{ asset('css/style.css') }}" crossorigin=""/>
-            <link rel="stylesheet" href="{{ asset('css/style-nav-header.css') }}" crossorigin=""/>
+            <!-- Internals stylesheets" -->
+            <link rel="stylesheet" href="{{ asset('css/base.css') }}"/>
 
+            <!-- Scripts JS for Bootstrap -->
+        
         {% endblock %}
 
     </head>
 
+    {% block body %}
     <body>
-        {% block body %}
         {% block header %}
-        <body>
-            <div class="container-fluid">
+       
+
+            <header>
+                <nav class="navbar navbar-expand-lg navbar-light {# bg-light #}">
+                    <a class="navbar-brand" href="{{ path('advanced_search')}}"><img src="{{ asset('pictures/logo/logo.png') }}" class="website-logo" /></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('advanced_search')}}"> Trouvez votre destination</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('search')}}">Recherche rapide</a>
+                            </li>
+                            {% if app.user %}
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Profil
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ path('user_show', { 'id' : app.user.id }) }}">Mon profil</a>
+                                        <a class="dropdown-item" href="{{ path('user_edit' , { id: app.user.id }) }}">Mes paramètres</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Mes villes coup de coeur</a>
+                                        <a class="dropdown-item" href="#">Mes profils suivis</a>
+                                        
+                                        
+                                    </div>
+                                
+                                </li>
+                            {% endif %}
+                        </ul>
+
+                        {% if app.user %}
+                            <ul class="navbar-nav margin-right">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+                            </li>
+                        {% else %}
+                            <ul class="navbar-nav margin-right">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Inscription</a>
+                                </li>
+                            </ul>
+                        {% endif %}
+                        
+                   
+                    </div>
+                </nav>
+            </header>
+
+    {% endblock %}
+
+    {% block container %}{% endblock %}
+
+    {% block footer %}
+
+    <footer>
+        <ul class="footer-links">
+            <li>
+                <a href="#" class="contact footer-link">Contact</a>
+            </li>
+            <li>
+                <a href="#" class="about footer-link">A propos</a>
+            </li>
+            <li>
+                <a href="#" class="legal-mentions footer-link">Mentions Légales</a>
+            </li>
+        </ul>
+    </footer>
+
+    {% endblock %}
+
+    {% endblock %}
+        
+            {# <div class="container-fluid">
                 <header id="small-devices">
+
+
+
                     <span class="navbar-toggler-icon d-block ml-auto" onclick="openNav()">
                         &#9776;
                     </span>
@@ -147,80 +231,16 @@
         {% endblock %}
         {% block javascripts %}
 
-            <!-- Javascript for Bootstrap -->
-            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-           
-           <!-- Script for l'overlay navigation --> 
-            <script>
-            function openNav() {
-                document.getElementById("myNav").style.width = "100%";
-            }
-
-            function closeNav() {
-                document.getElementById("myNav").style.width = "0%";
-            }
-            </script>
-
-            <!-- Script for collapsed menu --> 
-            <script>
-            if(document.querySelector('.overlay-content').dataset.userlogged == "true")
-            {
-                            let profileButton = document.getElementById("profileButton");
-            profileButton.setAttribute('class', 'undeployed')
-            
-            profileButton.addEventListener('click', displayElements);
-            
-            let allDisabledMenus = document.querySelectorAll(".disabled-menu");
-            allDisabledMenus.forEach(
-                function(disabledMenu)
-                {
-                    disabledMenu.style.display = "none";
-                }
-            )
-
-            function displayElements()
-            {
-                let rightChevron = document.querySelector('.fa-chevron-right');
-                
-                if(profileButton.matches('.undeployed'))
-                {
-                    rightChevron.style.display = "none";
-                    allDisabledMenus.forEach(
-                    function(disabledMenu)
-                    {
-                        disabledMenu.style.display = "inline-block";
-                        profileButton.classList.remove('undeployed');
-                        profileButton.classList.add('deployed');
-
-                    })
-                }
-                else
-                {
-                    profileButton.classList.remove('deployed');
-                    profileButton.classList.add('undeployed');
-
-                    let downChevron = document.querySelector('.fa-chevron-down');
-
-                    downChevron.style.display = "none";
-                    rightChevron.style.display = "inline-block";
-
-                    allDisabledMenus.forEach(
-                    function(disabledMenu)
-                    {
-                        disabledMenu.style.display = "none";
-
-                    })
-
-                }
-
-            }
-            }
-            </script>
-            <!-- Internal Javascript -->
-            <script src="{{ asset('js/base.js') }}"> </script>
+           <!-- Internal Javascript -->
+        <script src="{{ asset('js/base.js') }}"> </script>
 
         {% endblock %}
-    </body>
+   #} 
+   
+    {% block javascripts %}
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
+    {% endblock %}
+   </body>
 </html>
