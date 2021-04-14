@@ -23,14 +23,14 @@ class AdvancedSearchType extends AbstractType
                 'label' => 'Pays',
             ])
             ->add('startDate', DateType::class, [
-                'label' => 'Date de début prévue',
+                'label' => 'Date de début de voyage',
                 'years' => range(date('Y'), date('Y') + 5),
                 'constraints' => new GreaterThan('today'),
                 'widget' => 'single_text',
                 
             ])
             ->add('endDate', DateType::class, [
-                'label' => 'Date de fin prévue',
+                'label' => 'Date de fin de voyage',
                 'widget' => 'single_text',
                 //https://stackoverflow.com/questions/44983045/date-after-another-date-in-symfony-form
                 'constraints' => [

@@ -49,7 +49,16 @@ input#search {
     border: 2px solid #507DBC;
 }
 
+.search-error-hidden {
+    display:none;
+}
+
+.search-error-show{
+    margin-top: 0.8rem;
+}
+
 footer {
     position : absolute;
-    bottom : 0;
-  }
+    bottom: 0;
+}
+
