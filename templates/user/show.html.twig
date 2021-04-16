@@ -20,8 +20,8 @@
 <!-- Stylesheet EMOJI CSS -->
 <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
 
- <link rel="stylesheet" href="{{ asset('css/style-city-view.css') }}" crossorigin="" />
- <link rel="stylesheet" href="{{ asset('css/style-user-show.css') }}" crossorigin="" />
+
+<link rel="stylesheet" href="{{ asset('css/profil.css') }}" crossorigin="" />
 {% endblock %}
 
 {% block container %}
@@ -37,7 +37,7 @@
     {% if app.user.id == user.id %}
     <div class="intern-nav-user">
       {{ include('user/_nav.html.twig') }}
-    </div>
+    </div> 
     {% endif %}
 
 

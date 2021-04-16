@@ -1,5 +1,11 @@
 
 /*  STYLE CITY_SHOW */
+
+footer {
+  position : absolute;
+  bottom : 0;
+}
+
 .container-fluid {
   background-color: hsl(214, 15%, 91%, 0.8);
   min-height: 100%;
@@ -160,6 +166,7 @@ h4 {
 }
 
 .img-thumbnail {
+  margin-top: 2rem;
   padding: 0;
   border: none;
   flex: 1;
@@ -261,12 +268,14 @@ p {
   background-color: #56967D;
   margin: 0.2em;
   font-size: 0.9em;
-}
+} 
 
 .tags-list {
   margin: 2em auto;
   list-style-type: none;
   display : flex; 
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .tags-list-language {
@@ -600,9 +609,31 @@ form {
 }
 
 /* 100% Image Width on Smaller Screens */
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 767px) {
   .modal-content {
     width: 100%;
+  }
+
+  .min-temperature {
+    right: 200px;
+  }
+
+  .max-temperature {
+    right: 82px;
+  }
+
+  .thermo-min {
+    position: absolute;
+    left: -2.5rem;
+    height: 3.5rem;
+    width: auto;
+  }
+
+  .thermo-max {
+    position: absolute;
+    width: auto; 
+    height: 3.5rem;
+    left: 3.5rem;
   }
 }
 
@@ -655,6 +686,21 @@ form {
 
   .max-temperature {
     right: 82px;
+  }
+
+  .thermo-min {
+    position: absolute;
+    left: -2.5rem;
+    height: 3.5rem;
+    width: auto;
+
+  }
+
+  .thermo-max {
+    position: absolute;
+    width: auto; 
+    height: 3.5rem;
+    left: 3.8rem;
   }
 
   .img-carousel {
@@ -745,8 +791,8 @@ form {
 
   .thermo-min {
     position: absolute;
-    left: -40px;
-    height: 70px;
+    left: -3rem;
+    height: 4.5rem;
     width: auto;
 
   }
@@ -758,9 +804,9 @@ form {
 
   .thermo-max {
     position: absolute;
-    width: auto;
-    height: 70px;
-    left: 90px;
+    width: auto; 
+    height: 4.5rem;
+    left: 4rem;
   }
 
   .city-basic-datas {
@@ -916,14 +962,14 @@ form {
     top: 20px;
   }*/
 
-  img.website-logo{
+  /* img.website-logo{
     width: 200px;
     position: absolute;
     margin-top: -30px;
     padding-right: 40px;
     padding-bottom: 52px;
     left: 45%; 
-  }
+  } */ 
 
 }
 
