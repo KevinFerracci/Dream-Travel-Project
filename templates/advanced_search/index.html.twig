@@ -26,6 +26,13 @@
             {{ form_label(form.search) }} 
             {{ form_widget(form.search)}}
             <div id="search-error" class="search-error-hidden">Ce pays n'existe pas !</div>
+            <template id="template__elt">
+                <div class="card-country">
+                    <a href="#" class="link-to-country stretched-link">
+                        <div class="card-body-country"></div>
+                    </a>
+                </div>
+            </template>
         </fieldset>
 
         <fieldset class="form-group">
@@ -90,13 +97,7 @@
 
 </div>
 
-<template id="template__elt">
-    <div class="card-country">
-        <a href="#" class="link-to-country stretched-link">
-            <div class="card-body-country"></div>
-        </a>
-    </div>
-</template>
+
 {% endblock %}
 
 {% block javascripts %}

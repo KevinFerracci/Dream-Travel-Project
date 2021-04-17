@@ -2,7 +2,7 @@ body {
     color: #3243c4;
     background-image: url("../pictures/advanced-search-background/santorini.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
+    /* background-size: cover; */
     background-position: center;
     height: fit-content;
 }
