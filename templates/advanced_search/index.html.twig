@@ -26,14 +26,19 @@
             {{ form_label(form.search) }} 
             {{ form_widget(form.search)}}
             <div id="search-error" class="search-error-hidden">Ce pays n'existe pas !</div>
-            <template id="template__elt">
-                <div class="card-country">
+            <div id="search-results"></div>
+
+
+             <template id="template__elt">
+                <div class="card card-country">
                     <a href="#" class="link-to-country stretched-link">
-                        <div class="card-body-country"></div>
+                        <div class="card-body card-body-country"></div>
                     </a>
-                </div>
+               </div>
             </template>
+            
         </fieldset>
+        
 
         <fieldset class="form-group">
             {{ form_label(form.startDate) }} 
@@ -66,26 +71,20 @@
         </fieldset>
 
         <div class="form-checkboxes">
-            <div class="flex-row-title">
+            <div class="flex-row-1">
                 
                 {{ form_label(form.landscape)}}
-                {# {{ form_widget(form.landscape, {'attr': {'id': 'advanced-search-landscape'}})}} #}                          
+                {{ form_widget(form.landscape, {'attr': {'id': 'advanced-search-landscape'}})}} 
+            </div> 
+            <div class="flex-row-2">                            
                 {{ form_label(form.sportingActivities)}}
-                {# {{ form_widget(form.sportingActivities, {'attr': {'id': 'advanced-search-sporting-activities'}}) }} #}           
+                {{ form_widget(form.sportingActivities, {'attr': {'id': 'advanced-search-sporting-activities'}}) }} 
+            </div>   
+            <div class="flex-row-3">      
                 {{ form_label(form.placesToVisit) }}
-                {# {{ form_widget(form.placesToVisit) }} #}
-                        
-            </div>
-            <div class="flex-row">
-                {# {{ form_label(form.landscape)}} #}
-                {{ form_widget(form.landscape, {'attr': {'id': 'advanced-search-landscape'}})}}                  
-                {# {{ form_label(form.sportingActivities)}} #}
-                {{ form_widget(form.sportingActivities, {'attr': {'id': 'advanced-search-sporting-activities'}}) }}
-                {# {{ form_label(form.placesToVisit) }} #}
                 {{ form_widget(form.placesToVisit) }}
-                        
             </div>
-
+                        
         </div>
         <div class="buttons">
             <button class="btn form-reset">Réinitialiser</button>
@@ -93,7 +92,8 @@
         </div>
         {{ form_end(form) }}
 
-        <div id="search-results"></div>
+        
+
 
 </div>
 

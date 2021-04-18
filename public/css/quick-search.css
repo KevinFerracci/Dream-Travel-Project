@@ -1,3 +1,7 @@
+html{
+    height: fit-content;
+}
+
 body {
     color: #3243c4;
     background-image: url("../pictures/advanced-search-background/santorini.jpg");
@@ -12,7 +16,7 @@ h1{
     background-color: white;
     padding: 3rem;
     border: 2px solid #4885db;
-    border-radius: 5%;
+    border-radius: 3%;
     justify-content: center;
     align-items: center;
     margin: auto;
@@ -57,8 +61,38 @@ input#search {
     margin-top: 0.8rem;
 }
 
-footer {
-    position : absolute;
-    bottom: 0;
+.fill-viewheight{
+    height:23.5vh;
 }
 
+/* footer {
+    position : absolute;
+    bottom: 0;
+} */
+
+@media only screen and (max-width: 767px) {
+    .form-container-search{
+        width:75%;
+        padding: 2rem;
+        border-radius: 2%;
+    }
+
+    h1{
+        font-size: 2rem;
+    } 
+
+    .fill-viewheight{
+        display:none;
+    }
+
+}
+
+@media (max-width: 1000px) {
+
+    .fill-viewheight{
+        display:none;
+    }
+
+}
+@media (min-width: 1400px) {}
+@media (min-width: 1600px) {}
