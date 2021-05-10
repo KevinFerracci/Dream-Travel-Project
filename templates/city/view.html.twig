@@ -58,8 +58,8 @@
 						{% if 02 == weather.month %}
 							<div class="min-temperature">
 								<img src="{{ asset('pictures/weather_images/levelTemp_' ~ weather.tempLevelMin) ~ '.png'}}" class="thermo-img thermo-min" alt="Thermomètre"/>
-								Min
-								{{ weather.averageMin }}°C •
+								<p class = "min"> Min
+								{{ weather.averageMin }}°C • </p>
 							</div>
 							<div class="max-temperature">
 								Max
