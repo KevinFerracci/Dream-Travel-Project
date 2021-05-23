@@ -53,6 +53,7 @@ class CityRepository extends ServiceEntityRepository
     }
 
     public function findByCountryName($countryName){
+
         $builder = $this->createQueryBuilder('city');
         $builder->where('city.countryName LIKE :countryName');
         $builder->setParameter('countryName',$countryName);

@@ -24,7 +24,6 @@ class AdvancedSearchType extends AbstractType
             ])
             ->add('startDate', DateType::class, [
                 'label' => 'Date de début de voyage',
-                'years' => range(date('Y'), date('Y') + 5),
                 'constraints' => new GreaterThan('today'),
                 'widget' => 'single_text',
                 
@@ -32,7 +31,6 @@ class AdvancedSearchType extends AbstractType
             ->add('endDate', DateType::class, [
                 'label' => 'Date de fin de voyage',
                 'widget' => 'single_text',
-                //https://stackoverflow.com/questions/44983045/date-after-another-date-in-symfony-form
                 'constraints' => [
                     new Callback(function ($object, ExecutionContextInterface $context) {
                         $start = $context->getRoot()->getData()['startDate'];
@@ -41,7 +39,7 @@ class AdvancedSearchType extends AbstractType
                         if (is_a($start, \DateTime::class) && is_a($stop, \DateTime::class)) {
                             if ($stop->format('U') - $start->format('U') < 0) {
                                 $context
-                                    ->buildViolation('Stop must be after start')
+                                    ->buildViolation('La date de fin de voyage ne peut pas être avant le début ce dernier')
                                     ->addViolation();
                             }
                         }

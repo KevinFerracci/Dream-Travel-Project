@@ -23,24 +23,18 @@ class AdvancedSearchController extends AbstractController
         $form = $this->createForm(AdvancedSearchType::class);
         $form->handleRequest($request);
 
-        
-
-        //$formSearch = $this->createForm(SearchType::class);
         if ($form->isSubmitted() && $form->isValid()) {
 
-            //dd($request);
             $em = $this->getDoctrine()->getManager();
             $labels = $form->getData();
 
             if ($form->get('search')->getData()) {
                 $queryCountry = $form->get('search')->getData();
-                //create a query builder
                 $cities = $em->getRepository(City::class)->findByCountryName($queryCountry);
                 if (!$cities) {
                     return $this->redirectToRoute('advanced_search');
                 }
             } else {
-                //all cities of the db
                 $cities = $cityRepository->findAll();
             }
 

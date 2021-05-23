@@ -31,7 +31,6 @@
 
     <div class="city-list-result city-list-index">
 
-
     {% for result in arrayMatching|sort((a, b) => b.value <=> a.value)|slice(0,8) %}
    
     <a href="{{ path('city_view', { geonameId : result.city.geonameId }) }}">

@@ -89,7 +89,9 @@ class CityController extends AbstractController
         $objectResponse = json_decode($jsonString);
         $urbanArea = 'city:urban_area';
          if (isset($objectResponse->_links->$urbanArea)) {
-            $cityName = strtolower($objectResponse->name);
+             // to get for exemple New-York instead of New York for our APIs
+            $cityStringReplace = str_replace(' ', '-', $objectResponse->_links->$urbanArea->name);
+            $cityName = strtolower($cityStringReplace);
             $jsonStringScores = file_get_contents('https://api.teleport.org/api/urban_areas/slug:'. $cityName . '/scores/');
             $objectScoreResponse = json_decode($jsonStringScores);
 
