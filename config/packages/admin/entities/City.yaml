@@ -15,8 +15,12 @@ easy_admin:
 
             form: 
                 fields:
+                    - { property: 'cityName', label: 'Nom de la ville' }
+                    - { property: 'countryName', label: 'Pays de la ville' }
+                    - { property: 'geonameId', label: 'Geoname ID de la ville' }
                     - { property: 'tag', label: 'Tags de la ville' }
-                    - { property: 'weather', label: 'Temperatures moyennes par mois' }
+            
+                    
 
                    
                     

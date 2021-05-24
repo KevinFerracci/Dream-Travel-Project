@@ -16,7 +16,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
   id: 'mapbox/streets-v11',
   tileSize: 512,
   zoomOffset: -1,
-  accessToken: 'pk.eyJ1Ijoid2VseXdlbG9vIiwiYSI6ImNrYmFmYXdyYjBubGwycW84ZWJxYWk1MXAifQ.0HxMbJuY3rmSYfS2hmhcVw'
+  accessToken: 'pk.eyJ1Ijoic2V2ZW5rbGltIiwiYSI6ImNrbGtpbG41NzEwY2kyb3FpNTk4dWdyZXUifQ.d0rOMY386bVHvvljhh3OyA'
 }).addTo(mymap);
 
 let marker = L.marker([latitude, longitude]).addTo(mymap);
@@ -248,14 +248,8 @@ function changeHeart(evt) {
 
 // Translatation of the summary
 
-let apiKey = '';
 let summary = document.querySelector('.city-description').dataset.summary;
 
-
-summary = summary.replace(/(<([^>]+)>)/ig, "");
-
-
-let firstTranslation = {};
 fetch('/translate/', {
   method: 'POST',
   body: JSON.stringify(summary),
@@ -267,15 +261,11 @@ fetch('/translate/', {
     return response.json();
   }
   return Promise.reject(response);
-}).then(function (data) {
-  //console.log(data);
-  document.querySelector('.city-description').innerHTML = '<br>' + data.Translation;
-
+}).then(function (text) {
+  //console.log(text);
+  //console.log(text.Translation);
+  document.querySelector('.city-description').innerHTML = text.Translation;
 }).catch(function (error) {
   console.warn('Something went wrong.', error);
 });
 
-//Cette ligne permet de récupérer d'insérer le paragraphe dans la div concernée (fonctionne en console)
-//document.querySelector('.city-description').innerHTML = firstTranslation.data.translations[0].translatedText;
-//document.querySelector('.city-description').innerHTML = firstTranslation.Translation;
-//console.log(data)

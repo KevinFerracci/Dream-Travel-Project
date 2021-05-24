@@ -40,7 +40,6 @@ class RegistrationController extends AbstractController
                     $form->get('password')->getData()
                 )
             );
-
             //add default avatar
             $user->setAvatar('default-avatar.svg');
             //add default number of points

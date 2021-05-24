@@ -55,7 +55,7 @@
 
 
 					{% for weather in city.weather %}
-						{% if 02 == weather.month %}
+						{% if 04 == weather.month %}
 							<div class="min-temperature">
 								<img src="{{ asset('pictures/weather_images/levelTemp_' ~ weather.tempLevelMin) ~ '.png'}}" class="thermo-img thermo-min" alt="Thermomètre"/>
 								<p class = "min"> Min
@@ -82,7 +82,7 @@
 
 						{% for weather in city.weather %}
 
-							{% if 02 == weather.month %}
+							{% if 04 == weather.month %}
 								<div class="min-temperature">
 									<img src="{{ asset('pictures/weather_images/levelTemp_' ~ weather.tempLevelMin) ~ '.png'}}" class="thermo-img thermo-min" alt="Thermomètre"/>
 									Min
@@ -107,9 +107,7 @@
 							{% if cityScore is not null %}
 								<div id="progressbar-{{loop.index}}" class="progress-bar" role="progressbar" style="width: {{ cityScore.categories[score].score_out_of_10 * 10 }}%" aria-valuenow="{{ cityScore.categories[score].score_out_of_10 * 10 }}" aria-valuemin="0" aria-valuemax="100"></div>
 							{% else %}
-
-								<div id="progressbar-{{loop.index}}" class="progress-bar" role="progressbar" style="width: {{random(50,100)}}%" aria-valuenow="{{random(50,100)}}" aria-valuemin="0" aria-valuemax="100"></div>
-
+							<div id="progressbar-{{loop.index}}" class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50%" aria-valuemin="0" aria-valuemax="100"></div>
 							{% endif %}
 						</div>
 					{% endfor %}
@@ -126,12 +124,11 @@
 				<!-- End Leaflet Maps-->
 
 				{% if cityScore is not null %}
-					<div class="city-description text-justify" data-summary="{{ cityScore.summary }}">
-						{{ cityScore.summary }}
+					<div class="city-description text-justify" data-summary="{{ cityScore.summary}}">
+						{{ cityScore.summary|raw }}
 					</div>
 				{% else %}
 					<div class="city-description text-justify">
-						<br>
 						Pas d'informations disponibles pour cette ville
 					</div>
 				{% endif %}
@@ -175,10 +172,9 @@
 						<div class="carousel-item">
 							<div class="city-pictures text-center">
 								<div class="city-pictures text-center img-gallery">
-									{% for image in randomImages.results|slice(0,9) %}
+									{% for image in randomImages.results|slice(0,8) %}
 										<img id="{{ 'image' ~ random(1,50000) }}" src="{{ image.urls.thumb }}" alt="Image de Paris" class="img-thumbnail img-carousel"/>
 									{% endfor %}
-									yo
 								</div>
 							</div>
 						</div>

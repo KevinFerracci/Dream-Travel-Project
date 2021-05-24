@@ -90,6 +90,14 @@ class Review
         $this->likes = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        if (is_null($this->text)) {
+            return 'NULL';
+        }
+        return $this->text;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

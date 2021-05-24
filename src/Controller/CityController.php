@@ -113,9 +113,6 @@ class CityController extends AbstractController
             $titleImage = null;
         }
 
-
-
-
         return $this->render('city/view.html.twig', [
             'pageTitle' => $objectResponse->name,
             'city' => $city, 

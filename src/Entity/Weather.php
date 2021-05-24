@@ -62,6 +62,14 @@ class Weather
      */
     private $city;
 
+    public function __toString()
+    {
+        if(is_null($this->month)) {
+            return 'NULL';
+        }
+        return get_class($this);
+    }
+
     public function getId(): ?int
     {
         return $this->id;
