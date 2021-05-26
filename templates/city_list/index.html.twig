@@ -29,6 +29,8 @@
         informations dans une bucketlist.</p>
     {% endif %}
 
+    {{ dump(arrayMatching)}}
+
     <div class="city-list-result city-list-index">
 
     {% for result in arrayMatching|sort((a, b) => b.value <=> a.value)|slice(0,8) %}

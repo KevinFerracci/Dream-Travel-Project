@@ -38,7 +38,7 @@ security:
     access_control:
         - { path: ^/api, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/city/(list|random), roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/city/(\d+), roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/city/fiche/(\d+), roles: IS_AUTHENTICATED_ANONYMOUSLY }
 
         - { path: ^/user/(\d+)/(edit), roles: ROLE_USER }
         - { path: ^/user/(\d+), roles: ROLE_USER }

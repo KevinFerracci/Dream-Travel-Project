@@ -266,14 +266,14 @@ class Review
     }
 
     /**
-     * @return Collection|Like[]
+     * @return Collection|ReviewLike[]
      */
     public function getLikes(): Collection
     {
         return $this->likes;
     }
 
-    public function addLike(Like $like): self
+    public function addLike(ReviewLike $like): self
     {
         if (!$this->likes->contains($like)) {
             $this->likes[] = $like;
@@ -283,9 +283,10 @@ class Review
         return $this;
     }
 
-    public function removeLike(Like $like): self
+    public function removeLike(ReviewLike $like): self
     {
-        if ($this->likes->removeElement($like)) {
+        if ($this->likes->contains($like)) {
+            $this->likes->removeElement($like);
             // set the owning side to null (unless already changed)
             if ($like->getReview() === $this) {
                 $like->setReview(null);
